@@ -18,7 +18,55 @@ switchStateTimer++;
 
 switch myState
 {
-case State.Guy:
+case State.Idle:
+	x = round(x/4)*4;
+	y = round(y/4)*4;
+	switch facing
+	{
+		case Dir.North: sprite_index = sprPlayerN; image_xscale = 1; break;
+		case Dir.South: sprite_index = sprPlayer; image_xscale = 1; break;
+		case Dir.East: sprite_index = sprPlayer; image_xscale = 1; break;
+		case Dir.West: sprite_index = sprPlayer; image_xscale = -1; break;
+	}
+	
+	myAlpha = 1;
+	
+	if haveBeenDamaged
+	{
+		myColor = c_red;
+	}
+	else
+	{
+		myColor = c_white;
+	}
+	
+		
+	if _die
+	{
+		global.myCorpse = instance_create_depth(x,y,depth, objCorpse);
+		myState = State.Ghost;
+	}
+	
+	if _grab
+	{
+		switch facing
+		{
+			case Dir.North: if place_meeting(x,y-16,objBall){ myState = State.Grabbing } break;
+			case Dir.South: if place_meeting(x,y+16,objBall){ myState = State.Grabbing } break;
+			case Dir.East: if place_meeting(x+16,y,objBall){ myState = State.Grabbing } break;
+			case Dir.West: if place_meeting(x-16,y,objBall){ myState = State.Grabbing } break;
+		}
+		
+		
+		
+	}
+	
+	if _up or _down or _left or _right
+	{
+		myState = State.Walking;
+	}
+break;
+case State.Walking:
 
 	switch facing
 	{
@@ -44,27 +92,32 @@ case State.Guy:
 		facing = Dir.North;
 		if !place_meeting(x, y -_movespeed, objWall)
 		y -= _movespeed
-	}
-	
+	} else 
 	if _down
 	{
 		facing = Dir.South;
 	if !place_meeting(x, y+_movespeed, objWall)
 		y += _movespeed
-	}
+	} else
 	
 	if _left
 	{
 		facing = Dir.West;
 		if !place_meeting(x-_movespeed, y, objWall)
 		x -= _movespeed
-	}
+	} else
 	if _right
 	{
 		facing = Dir.East;
 		if !place_meeting(x+_movespeed, y, objWall)
 		x += _movespeed
+	} else
+	{
+		myState = State.Idle;
 	}
+	
+	
+	
 	if _die
 	{
 		global.myCorpse = instance_create_depth(x,y,depth, objCorpse);
@@ -120,7 +173,7 @@ case State.Ghost:
 		{
 			//x = global.myCorpse.x;
 			//y = global.myCorpse.y;
-			myState = State.Guy;
+			myState = State.Idle;
 			instance_destroy(global.myCorpse);
 			global.myCorpse = noone;
 		}
@@ -197,7 +250,7 @@ if _throw
 			instance_destroy();
 		}
 	
-		myState = State.Guy;
+		myState = State.Idle;
 	}
 	
 
@@ -241,7 +294,7 @@ case State.Throwing:
 	
 	if switchStateTimer > 8
 	{
-		myState = State.Guy;
+		myState = State.Idle;
 	}
 	
 break;

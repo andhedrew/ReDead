@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "objBallThrow",
+  "name": "objDoorCrumble",
   "spriteId": {
-    "name": "SprRollingBall",
-    "path": "sprites/SprRollingBall/SprRollingBall.yy",
+    "name": "sprDoorCrumble",
+    "path": "sprites/sprDoorCrumble/sprDoorCrumble.yy",
   },
   "solid": false,
   "visible": true,
@@ -27,10 +27,6 @@
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"objEnemy","path":"objects/objEnemy/objEnemy.yy",},},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"objWall","path":"objects/objWall/objWall.yy",},},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":1,"collisionObjectId":null,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"objDoor","path":"objects/objDoor/objDoor.yy",},},
   ],
   "properties": [],
   "overriddenProperties": [],

@@ -2,7 +2,8 @@ moving = false;
 
 enum State
 {
-	Guy,
+	Idle,
+	Walking,
 	Ghost,
 	Dead,
 	Grabbing,
@@ -12,7 +13,7 @@ enum State
 	
 }
 
-myState = State.Guy;
+myState = State.Idle;
 
 global.myCorpse = noone;
 
