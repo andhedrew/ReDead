@@ -1,0 +1,1 @@
+facing = objPlayer.facing;
