@@ -9,7 +9,7 @@ enum State
 	Grabbing,
 	Pushing,
 	Throwing,
-	
+	InPit,
 	
 }
 

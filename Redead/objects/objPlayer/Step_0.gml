@@ -16,6 +16,9 @@ if myState != myStateLastFrame
 myStateLastFrame = myState;
 switchStateTimer++;
 
+
+
+
 switch myState
 {
 case State.Idle:
@@ -140,6 +143,8 @@ case State.Walking:
 break;
 
 case State.Ghost:
+
+
 	sprite_index = sprGhost;
 	myAlpha = 0.4;
 
@@ -167,12 +172,24 @@ case State.Ghost:
 		if !place_meeting(x+_movespeed, y, objWall)
 		x += _movespeed
 	}
+	
+	if place_meeting(x,y,objCorpse)
+	{
+		global.myCorpse = instance_nearest(x,y,objCorpse)
+	}
+	else
+	{
+		global.myCorpse = noone;
+	}
+	
+	
+	
 	if _die
 	{
 		if global.myCorpse != noone
 		{
-			//x = global.myCorpse.x;
-			//y = global.myCorpse.y;
+			x = global.myCorpse.x;
+			y = global.myCorpse.y;
 			myState = State.Idle;
 			instance_destroy(global.myCorpse);
 			global.myCorpse = noone;
@@ -296,6 +313,52 @@ case State.Throwing:
 	{
 		myState = State.Idle;
 	}
+	
+break;
+
+case State.InPit:
+
+
+	if _up 
+	{
+		facing = Dir.North;
+		
+	} else 
+	if _down
+	{
+		facing = Dir.South;
+
+	} else
+	
+	if _left
+	{
+		facing = Dir.West;
+
+	} else
+	if _right
+	{
+		facing = Dir.East;
+
+	}
+	
+	switch facing
+	{
+		case Dir.North: sprite_index = sprPlayerInPitN; image_xscale = 1; break;
+		case Dir.South: sprite_index = sprPlayerInPitS; image_xscale = 1; break;
+		case Dir.East: sprite_index = sprPlayerInPitEW; image_xscale = 1; break;
+		case Dir.West: sprite_index =  sprPlayerInPitEW; image_xscale = -1; break;
+	}
+	
+	if _die
+	{
+		with instance_nearest(x,y,objPit)
+		{
+			filledIn = true;
+		}
+		myState = State.Ghost;
+	}
+	
+	
 	
 break;
 
