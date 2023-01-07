@@ -42,6 +42,7 @@
     {"id":{"name":"sprPlayerInPitN","path":"sprites/sprPlayerInPitN/sprPlayerInPitN.yy",},"order":27,},
     {"id":{"name":"sprFilledIn","path":"sprites/sprFilledIn/sprFilledIn.yy",},"order":22,},
     {"id":{"name":"objPlayerStartPos","path":"objects/objPlayerStartPos/objPlayerStartPos.yy",},"order":30,},
+    {"id":{"name":"Room0","path":"rooms/Room0/Room0.yy",},"order":2,},
     {"id":{"name":"objBallSpawn","path":"objects/objBallSpawn/objBallSpawn.yy",},"order":21,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
@@ -60,6 +61,7 @@
     "children": [],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"Room0","path":"rooms/Room0/Room0.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
   ],

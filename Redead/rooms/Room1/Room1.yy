@@ -17,7 +17,6 @@
   ],
   "layers": [
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances_1","instances":[
-        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_7F4D63B5","properties":[],"isDnd":false,"objectId":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":48.0,"y":56.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_34CB8B77","properties":[],"isDnd":false,"objectId":{"name":"objWall","path":"objects/objWall/objWall.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":11.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":0.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_48305996","properties":[],"isDnd":false,"objectId":{"name":"objWall","path":"objects/objWall/objWall.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":13.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":-32.0,"y":128.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_2D0E9A1E","properties":[],"isDnd":false,"objectId":{"name":"objWall","path":"objects/objWall/objWall.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":3.5,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":144.0,"y":16.0,},
@@ -40,7 +39,6 @@
   "creationCodeFile": "",
   "inheritCode": false,
   "instanceCreationOrder": [
-    {"name":"inst_7F4D63B5","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_34CB8B77","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_48305996","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_2D0E9A1E","path":"rooms/Room1/Room1.yy",},
