@@ -1,6 +1,6 @@
-movingDir = irandom_range(1,4);
+movingDir = 3;
 
-_movespeed = 1;
+_movespeed = .6;
 
 
 _up = false;

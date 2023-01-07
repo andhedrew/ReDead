@@ -12,8 +12,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objWall",
-    "path": "objects/objWall/objWall.yy",
+    "name": "objSolid",
+    "path": "objects/objSolid/objSolid.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,

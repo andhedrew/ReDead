@@ -6,3 +6,5 @@ if room == Room0
 	}
 	
 }
+
+depth = -1000;

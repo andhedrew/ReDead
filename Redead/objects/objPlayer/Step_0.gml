@@ -8,6 +8,12 @@ var _die = keyboard_check_pressed(vk_space);
 var _movespeed = 1;
 
 
+var _up_pressed = keyboard_check_pressed(vk_up);
+var _down_pressed = keyboard_check_pressed(vk_down);
+var _left_pressed = keyboard_check_pressed(vk_left);
+var _right_pressed = keyboard_check_pressed(vk_right);
+
+
 if myState != myStateLastFrame
 {
 	switchStateTimer = 0;
@@ -21,9 +27,10 @@ switchStateTimer++;
 
 switch myState
 {
-case State.Idle:
-	x = round(x/4)*4;
-	y = round(y/4)*4;
+case State.Idle:  //================================================================================================================================================================//
+
+	image_speed = 0;
+	image_index = 0;
 	switch facing
 	{
 		case Dir.North: sprite_index = sprPlayerN; image_xscale = 1; break;
@@ -63,14 +70,30 @@ case State.Idle:
 		
 		
 	}
-	
+	//switch states
 	if _up or _down or _left or _right
 	{
 		myState = State.Walking;
 	}
+	
+	//if I'm being knocked back
+	if knockback
+	{
+		var _dir = point_direction(knockingBack.x, knockingBack.y, x,y);
+		direction = _dir;
+		speed = lerp(speed, 0, 0.1);
+		if speed <= 0
+		{
+			speed = 0;
+			knockback = false;
+		}
+		
+	}
 break;
-case State.Walking:
+case State.Walking:  //================================================================================================================================================================//
 
+	image_speed = .2;
+	
 	switch facing
 	{
 		case Dir.North: sprite_index = sprPlayerN; image_xscale = 1; break;
@@ -136,40 +159,53 @@ case State.Walking:
 			case Dir.East: if place_meeting(x+16,y,objBall){ myState = State.Grabbing } break;
 			case Dir.West: if place_meeting(x-16,y,objBall){ myState = State.Grabbing } break;
 		}
-		
-		
+
+	}
+	
+	//if I'm being knocked back
+	if knockback
+	{
+		var _dir = point_direction(knockingBack.x, knockingBack.y, x,y);
+		direction = _dir;
+		speed = lerp(speed, 0, 0.1);
+		if speed <= 0
+		{
+			speed = 0;
+			knockback = false;
+		}
 		
 	}
 break;
 
-case State.Ghost:
-
-
+case State.Ghost: //================================================================================================================================================================//=
+	knockback = false;
+	myColor = c_white;
 	sprite_index = sprGhost;
 	myAlpha = 0.4;
+	speed = 0;
 
 	
 	
 	if _up 
 	{
-		if !place_meeting(x, y -_movespeed, objWall)
+		if !place_meeting(x, y -_movespeed, objSolid)
 		y -= _movespeed
 	}
 	
 	if _down
 	{
-	if !place_meeting(x, y+_movespeed, objWall)
+	if !place_meeting(x, y+_movespeed, objSolid)
 		y += _movespeed
 	}
 	
 	if _left
 	{
-		if !place_meeting(x-_movespeed, y, objWall)
+		if !place_meeting(x-_movespeed, y, objSolid)
 		x -= _movespeed
 	}
 	if _right
 	{
-		if !place_meeting(x+_movespeed, y, objWall)
+		if !place_meeting(x+_movespeed, y, objSolid)
 		x += _movespeed
 	}
 	
@@ -199,12 +235,14 @@ case State.Ghost:
 
 break;
 
-case State.Dead:
-
+case State.Dead:  //================================================================================================================================================================//
+myColor = c_white;
 break;
 
-case State.Grabbing:
-
+case State.Grabbing: //================================================================================================================================================================//
+knockback = false;
+speed = 0;
+myColor = c_white;
 if _throw
 {
 	
@@ -296,11 +334,12 @@ if _throw
 	}
 break;
 
-case State.Pushing:
+case State.Pushing:  //================================================================================================================================================================//
 
 break;
 
-case State.Throwing:
+case State.Throwing: //================================================================================================================================================================//
+knockback = false;
 	switch facing
 	{
 		case Dir.North: sprite_index = sprPlayerThrowN; image_xscale = 1; break;
@@ -316,11 +355,49 @@ case State.Throwing:
 	
 break;
 
-case State.InPit:
+case State.InPit: //================================================================================================================================================================//
 
+if instance_exists(objBallCarry) && switchStateTimer < 3
+{
+	with instance_nearest(x,y,objBallCarry)
+	{
+		instance_create_depth(x,y,depth,objBall);
+		instance_destroy();
+	}
+}
+
+
+if _up_pressed && facing == Dir.North && !place_meeting(x,y-16,objWall)
+{
+	y -= 16;
+	myState = State.Idle;
+}
+if _down_pressed && facing == Dir.South && !place_meeting(x,y+16,objWall)
+{
+	y += 16;
+	myState = State.Idle;
+}
+if _right_pressed && facing == Dir.East && !place_meeting(x+16,y,objWall)
+{
+	x += 16;
+	myState = State.Idle;
+}
+if _left_pressed && facing == Dir.West && !place_meeting(x-16,y,objWall)
+{
+	x -= 16;
+	myState = State.Idle;
+}
+
+
+
+
+knockback = false;
+speed = 0;
+myColor = c_white;
 
 	if _up 
 	{
+
 		facing = Dir.North;
 		
 	} else 
@@ -358,8 +435,80 @@ case State.InPit:
 		myState = State.Ghost;
 	}
 	
+	if _grab
+	{
+
+		switch facing
+		{
+			case Dir.North: if place_meeting(x,y-16,objBall){ myState = State.GrabbingInPit; } break;
+			case Dir.South: if place_meeting(x,y+16,objBall){ myState = State.GrabbingInPit; } break;
+			case Dir.East: if place_meeting(x+16,y,objBall){ myState = State.GrabbingInPit; } break;
+			case Dir.West: if place_meeting(x-16,y,objBall){ myState = State.GrabbingInPit; } break;
+		}
+
+	}
 	
 	
 break;
 
+
+
+case State.GrabbingInPit: //================================================================================================================================================================//
+
+
+	
+	switch facing
+	{
+		case Dir.North: sprite_index = sprPlayerGrabbingN; image_xscale = 1; break;
+		case Dir.South: sprite_index = sprPlayerGrabbingS; image_xscale = 1; break;
+		case Dir.East: sprite_index = sprPlayerGrabbingE; image_xscale = 1; break;
+		case Dir.West: sprite_index = sprPlayerGrabbingE; image_xscale = -1; break;
+	}
+	
+	if _grab
+	{
+		var _grabbed = instance_nearest(x,y,objBall);
+	
+		with _grabbed
+		{
+			instance_create_depth(x,y,depth,objBallCarry);
+			instance_destroy()
+		}
+	}
+	
+	if !_grab
+	{
+	
+		with instance_nearest(x,y,objBallCarry)
+		{
+			instance_create_depth(x,y,depth,objBall);
+			instance_destroy();
+		}
+	
+		myState = State.InPit;
+	}
+	
+		if _throw
+	{
+	
+		with instance_nearest(x,y,objBallCarry)
+		{
+			instance_destroy();
+		}
+	
+		switch facing
+		{
+			case Dir.North: instance_create_depth(x,y+16,depth,objBall); break;
+			case Dir.South: instance_create_depth(x,y-16,depth,objBall); break;
+			case Dir.East: instance_create_depth(x-16,y,depth,objBall); break;
+			case Dir.West: instance_create_depth(x+16,y,depth,objBall); break;
+		}
+	
+	
+		myState = State.Throwing;
+	
+	}
+	
+
+break;
 }

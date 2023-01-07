@@ -1,0 +1,1 @@
+stealBallTimer = 0;

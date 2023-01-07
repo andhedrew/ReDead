@@ -1,4 +1,5 @@
 if filledIn
 {
-	sprite_index = sprFilledIn;
+	instance_create_depth(x,y,depth, objPitClosed)
+	instance_destroy();
 }

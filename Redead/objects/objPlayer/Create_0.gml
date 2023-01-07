@@ -10,6 +10,7 @@ enum State
 	Pushing,
 	Throwing,
 	InPit,
+	GrabbingInPit,
 	
 }
 
@@ -17,7 +18,8 @@ myState = State.Idle;
 
 global.myCorpse = noone;
 
-myHealth = 3;
+myMaxHealth = 3;
+myHealth = myMaxHealth;
 haveBeenDamaged = false
 
 
@@ -40,3 +42,9 @@ facing = Dir.South;
 
 switchStateTimer = 0;
 myStateLastFrame = noone;
+
+
+knockback = false;
+knockingBack = noone;
+knockbackAmount = 15;
+knockbackTimer = 0;

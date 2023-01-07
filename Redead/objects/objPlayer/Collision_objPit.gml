@@ -1,4 +1,4 @@
-if myState != State.Ghost 
+if myState != State.Ghost && myState != State.GrabbingInPit && myState != State.Throwing
 {
 	if !other.filledIn
 	{
