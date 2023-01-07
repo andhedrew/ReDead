@@ -1,4 +1,4 @@
-room_goto(Room2);
+room_goto(my_room);
 
 
 instance_destroy()

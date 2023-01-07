@@ -12,8 +12,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objEnemyAvoid",
-    "path": "objects/objEnemyAvoid/objEnemyAvoid.yy",
+    "name": "objWall",
+    "path": "objects/objWall/objWall.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -29,6 +29,7 @@
   "physicsShapePoints": [],
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"objDoor","path":"objects/objDoor/objDoor.yy",},},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"objEnemy","path":"objects/objEnemy/objEnemy.yy",},},
   ],
   "properties": [],
   "overriddenProperties": [],

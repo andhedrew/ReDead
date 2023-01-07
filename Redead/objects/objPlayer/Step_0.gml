@@ -287,10 +287,10 @@ if _throw
 	{
 		switch objPlayer.facing
 		{
-			case Dir.North: x = objPlayer.x; y = objPlayer.y-16; break;
-			case Dir.South: x = objPlayer.x; y = objPlayer.y+16; break;
-			case Dir.East: x = objPlayer.x+16; y = objPlayer.y; break;
-			case Dir.West: x = objPlayer.x-16; y = objPlayer.y; break;
+			case Dir.North: if !place_meeting(objPlayer.x, objPlayer.y-16, objWall){ x = objPlayer.x; y = objPlayer.y-16; } break;
+			case Dir.South: if !place_meeting(objPlayer.x, objPlayer.y+16, objWall){ x = objPlayer.x; y = objPlayer.y+16; } break;
+			case Dir.East: if !place_meeting(objPlayer.x+16, objPlayer.y, objWall){ x = objPlayer.x+16; y = objPlayer.y; } break;
+			case Dir.West: if !place_meeting(objPlayer.x-16, objPlayer.y, objWall){ x = objPlayer.x-16; y = objPlayer.y; } break;
 		}
 		
 		
@@ -309,7 +309,6 @@ if _throw
 	}
 	
 
-	
 	if _up 
 	{
 		if !place_meeting(x, y -_movespeed, objWall)
@@ -332,6 +331,7 @@ if _throw
 		if !place_meeting(x+_movespeed, y, objWall)
 		x += _movespeed
 	}
+	
 break;
 
 case State.Pushing:  //================================================================================================================================================================//
@@ -367,22 +367,22 @@ if instance_exists(objBallCarry) && switchStateTimer < 3
 }
 
 
-if _up_pressed && facing == Dir.North && !place_meeting(x,y-16,objWall)
+if _up_pressed && facing == Dir.North && !place_meeting(x,y-16,objWall) && switchStateTimer > 5
 {
 	y -= 16;
 	myState = State.Idle;
 }
-if _down_pressed && facing == Dir.South && !place_meeting(x,y+16,objWall)
+if _down_pressed && facing == Dir.South && !place_meeting(x,y+16,objWall) && switchStateTimer > 5
 {
 	y += 16;
 	myState = State.Idle;
 }
-if _right_pressed && facing == Dir.East && !place_meeting(x+16,y,objWall)
+if _right_pressed && facing == Dir.East && !place_meeting(x+16,y,objWall) && switchStateTimer > 5
 {
 	x += 16;
 	myState = State.Idle;
 }
-if _left_pressed && facing == Dir.West && !place_meeting(x-16,y,objWall)
+if _left_pressed && facing == Dir.West && !place_meeting(x-16,y,objWall) && switchStateTimer > 5
 {
 	x -= 16;
 	myState = State.Idle;
