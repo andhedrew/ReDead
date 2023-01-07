@@ -2,7 +2,10 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "objEnemyAvoid",
-  "spriteId": null,
+  "spriteId": {
+    "name": "sprEmpty",
+    "path": "sprites/sprEmpty/sprEmpty.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,
