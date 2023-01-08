@@ -104,6 +104,8 @@ case State.Walking:  //=========================================================
 	
 	myAlpha = 1;
 	
+	
+	//Flash red when damaged
 	if haveBeenDamaged
 	{
 		myColor = c_red;
@@ -113,35 +115,42 @@ case State.Walking:  //=========================================================
 		myColor = c_white;
 	}
 	
+
+	//movement
+	ySpeed = 0;
+	xSpeed = 0;
 	if _up 
 	{
+		ySpeed -= mySpeed;
 		facing = Dir.North;
-		if !place_meeting(x, y -_movespeed, objWall)
-		y -= _movespeed
-	} else 
+
+	}
 	if _down
 	{
+		ySpeed += mySpeed;
 		facing = Dir.South;
-	if !place_meeting(x, y+_movespeed, objWall)
-		y += _movespeed
-	} else
+
+	}
 	
 	if _left
 	{
+		xSpeed -= mySpeed;
 		facing = Dir.West;
-		if !place_meeting(x-_movespeed, y, objWall)
-		x -= _movespeed
-	} else
+
+	}
 	if _right
 	{
+		xSpeed += mySpeed;
 		facing = Dir.East;
-		if !place_meeting(x+_movespeed, y, objWall)
-		x += _movespeed
-	} else
+
+	}
+	
+	if ySpeed == 0 && xSpeed == 0
 	{
 		myState = State.Idle;
 	}
 	
+	move.xSpdYSpd(xSpeed, ySpeed);
 	
 	
 	if _die
@@ -186,28 +195,38 @@ case State.Ghost: //============================================================
 
 	
 	
+	//movement
+	ySpeed = 0;
+	xSpeed = 0;
 	if _up 
 	{
-		if !place_meeting(x, y -_movespeed, objSolid)
-		y -= _movespeed
+		ySpeed -= mySpeed;
+		facing = Dir.North;
+
 	}
-	
 	if _down
 	{
-	if !place_meeting(x, y+_movespeed, objSolid)
-		y += _movespeed
+		ySpeed += mySpeed;
+		facing = Dir.South;
+
 	}
 	
 	if _left
 	{
-		if !place_meeting(x-_movespeed, y, objSolid)
-		x -= _movespeed
+		xSpeed -= mySpeed;
+		facing = Dir.West;
+
 	}
 	if _right
 	{
-		if !place_meeting(x+_movespeed, y, objSolid)
-		x += _movespeed
+		xSpeed += mySpeed;
+		facing = Dir.East;
+
 	}
+	
+
+	moveGhost.xSpdYSpd(xSpeed, ySpeed);
+	
 	
 	if place_meeting(x,y,objCorpse)
 	{
@@ -309,28 +328,37 @@ if _throw
 	}
 	
 
+	//movement
+	ySpeed = 0;
+	xSpeed = 0;
 	if _up 
 	{
-		if !place_meeting(x, y -_movespeed, objWall)
-		y -= _movespeed
+		ySpeed -= mySpeed;
+		
+
 	}
-	
 	if _down
 	{
-	if !place_meeting(x, y+_movespeed, objWall)
-		y += _movespeed
+		ySpeed += mySpeed;
+	
+
 	}
 	
 	if _left
 	{
-		if !place_meeting(x-_movespeed, y, objWall)
-		x -= _movespeed
+		xSpeed -= mySpeed;
+	
+
 	}
 	if _right
 	{
-		if !place_meeting(x+_movespeed, y, objWall)
-		x += _movespeed
+		xSpeed += mySpeed;
+		
+
 	}
+	
+	move.xSpdYSpd(xSpeed, ySpeed);
+	
 	
 break;
 

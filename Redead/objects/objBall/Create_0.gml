@@ -8,3 +8,6 @@ mySpeed = 3;
 myMaxSpeed = 5;
 
 finalDepth = depth;
+
+move = use_tdmc();
+

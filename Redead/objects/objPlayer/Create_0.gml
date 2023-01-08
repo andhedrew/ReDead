@@ -1,4 +1,7 @@
 moving = false;
+xSpeed = 0;
+ySpeed = 0;
+mySpeed = 2;
 
 enum State
 {
@@ -48,3 +51,7 @@ knockback = false;
 knockingBack = noone;
 knockbackAmount = 15;
 knockbackTimer = 0;
+
+
+move = use_tdmc()
+moveGhost = use_tdmc_Solid()

@@ -4,6 +4,7 @@
   "name": "Redead",
   "resources": [
     {"id":{"name":"objDoorCrumble","path":"objects/objDoorCrumble/objDoorCrumble.yy",},"order":20,},
+    {"id":{"name":"testbaa","path":"objects/testbaa/testbaa.yy",},"order":45,},
     {"id":{"name":"objSolid","path":"objects/objSolid/objSolid.yy",},"order":36,},
     {"id":{"name":"sprPlayer","path":"sprites/sprPlayer/sprPlayer.yy",},"order":1,},
     {"id":{"name":"sprPlayerInPitS","path":"sprites/sprPlayerInPitS/sprPlayerInPitS.yy",},"order":24,},
@@ -25,7 +26,6 @@
     {"id":{"name":"Room6","path":"rooms/Room6/Room6.yy",},"order":6,},
     {"id":{"name":"sprTrigger","path":"sprites/sprTrigger/sprTrigger.yy",},"order":23,},
     {"id":{"name":"sprPlayerThrowN","path":"sprites/sprPlayerThrowN/sprPlayerThrowN.yy",},"order":17,},
-    {"id":{"name":"use_tdmc","path":"scripts/use_tdmc/use_tdmc.yy",},"order":0,},
     {"id":{"name":"Room3","path":"rooms/Room3/Room3.yy",},"order":3,},
     {"id":{"name":"Room5","path":"rooms/Room5/Room5.yy",},"order":5,},
     {"id":{"name":"use_tdmc_Solid","path":"scripts/use_tdmc_Solid/use_tdmc_Solid.yy",},"order":1,},
@@ -49,6 +49,7 @@
     {"id":{"name":"objCorpse","path":"objects/objCorpse/objCorpse.yy",},"order":6,},
     {"id":{"name":"objBallThrow","path":"objects/objBallThrow/objBallThrow.yy",},"order":11,},
     {"id":{"name":"objPitClosed","path":"objects/objPitClosed/objPitClosed.yy",},"order":34,},
+    {"id":{"name":"use_tdmc","path":"scripts/use_tdmc/use_tdmc.yy",},"order":2,},
     {"id":{"name":"sprWall","path":"sprites/sprWall/sprWall.yy",},"order":15,},
     {"id":{"name":"objBall","path":"objects/objBall/objBall.yy",},"order":8,},
     {"id":{"name":"SprBall","path":"sprites/SprBall/SprBall.yy",},"order":16,},
