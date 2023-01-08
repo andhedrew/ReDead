@@ -13,8 +13,8 @@ if myState != State.Ghost
 		alarm[0] = 40;
 		
 	}
-	knockingBack = other;
-	speed = 3;
-	knockback = true;
+	//knockingBack = other;
+	//speed = 3;
+	//knockback = true;
 	
 }

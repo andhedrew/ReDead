@@ -51,6 +51,7 @@ knockback = false;
 knockingBack = noone;
 knockbackAmount = 15;
 knockbackTimer = 0;
+knockbackDir = 0;
 
 
 move = use_tdmc()

@@ -32,6 +32,10 @@ case State.Idle:  //============================================================
 
 	image_speed = 0;
 	image_index = 0;
+
+	xSpeed = 0;
+	ySpeed = 0;
+
 	switch facing
 	{
 		case Dir.North: sprite_index = sprPlayerN; image_xscale = 1; break;
@@ -54,7 +58,7 @@ case State.Idle:  //============================================================
 		
 	if _die
 	{
-		global.myCorpse = instance_create_depth(x,y,depth, objCorpse);
+		global.myCorpse = instance_create_depth(x,y,SortLayer.Ground, objCorpse);
 		myState = State.Ghost;
 	}
 	
@@ -76,20 +80,9 @@ case State.Idle:  //============================================================
 	{
 		myState = State.Walking;
 	}
+
+	move.xSpdYSpd(xSpeed, ySpeed);
 	
-	//if I'm being knocked back
-	if knockback
-	{
-		var _dir = point_direction(knockingBack.x, knockingBack.y, x,y);
-		direction = _dir;
-		speed = lerp(speed, 0, 0.1);
-		if speed <= 0
-		{
-			speed = 0;
-			knockback = false;
-		}
-		
-	}
 break;
 case State.Walking:  //================================================================================================================================================================//
 
@@ -118,8 +111,10 @@ case State.Walking:  //=========================================================
 	
 
 	//movement
-	ySpeed = 0;
-	xSpeed = 0;
+
+		ySpeed = 0;
+		xSpeed = 0;
+
 	if _up 
 	{
 		ySpeed -= mySpeed;
@@ -150,6 +145,7 @@ case State.Walking:  //=========================================================
 	{
 		myState = State.Idle;
 	}
+
 	
 	move.xSpdYSpd(xSpeed, ySpeed);
 	
@@ -172,24 +168,15 @@ case State.Walking:  //=========================================================
 
 	}
 	
-	//if I'm being knocked back
-	if knockback
-	{
-		var _dir = point_direction(knockingBack.x, knockingBack.y, x,y);
-		direction = _dir;
-		speed = lerp(speed, 0, 0.1);
-		if speed <= 0
-		{
-			speed = 0;
-			knockback = false;
-		}
-		
-	}
+
 break;
 
 case State.Ghost: //================================================================================================================================================================//=
 	knockback = false;
-	myColor = c_white;
+	if switchStateTimer < 3
+	{
+		myColor = c_white;
+	}
 	sprite_index = sprGhost;
 	myAlpha = 0.4;
 	speed = 0;
@@ -249,6 +236,18 @@ case State.Ghost: //============================================================
 			myState = State.Idle;
 			instance_destroy(global.myCorpse);
 			global.myCorpse = noone;
+		}
+		
+	}
+	
+		
+	if _grab
+	{
+		if global.myCorpse != noone
+		{
+			myColor = c_red
+			instance_destroy(global.myCorpse);
+			instance_create_depth(x,y,SortLayer.Above, objCorpseExplosion);
 		}
 		
 	}

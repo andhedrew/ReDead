@@ -1,3 +1,3 @@
 depth = SortLayer.Above;
 
-image_speed = .5;
+image_speed = .35;
