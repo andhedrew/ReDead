@@ -55,3 +55,7 @@ knockbackTimer = 0;
 
 move = use_tdmc()
 moveGhost = use_tdmc_Solid()
+
+
+orginX = x;
+orginY = y;

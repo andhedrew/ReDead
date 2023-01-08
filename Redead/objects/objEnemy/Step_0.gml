@@ -1,56 +1,32 @@
 
 image_speed = .2;
 
-if _up 
-{
-	if !place_meeting(x, y -_movespeed, objEnemyAvoid)
-	{
-	y -= _movespeed
-	}	else
-	{
-		_movespeed = -_movespeed;
-	}
-}
-	
-if _down
-{
-	if !place_meeting(x, y+_movespeed, objEnemyAvoid)
-	{
-	y += _movespeed
-	}
-		else
-	{
+move.xSpdYSpd(xSpeed, ySpeed);
 
-		_movespeed = -_movespeed;
-	}
 
-}
-	
-if _left
+if move.againstWall.hori == 1 
 {
-	if !place_meeting(x+_movespeed, y, objEnemyAvoid)
-	{
-	x += _movespeed
-	}	else
-	{
-		image_xscale = -1;
-		_movespeed = -_movespeed;
-		_right = true;
-		_left = false;
-	}
+	xSpeed = -moveSpeed;
+	image_xscale = -1;
 }
-if _right
+
+
+if move.againstWall.hori == -1
 {
-	if !place_meeting(x+_movespeed, y, objEnemyAvoid) 
-	{
-	x += _movespeed
-	}
-	else
-	{
-		image_xscale = 1;
-		_movespeed = -_movespeed;
-		_right = false;
-		_left = true;
-	}
-	
+	xSpeed = moveSpeed;
+	image_xscale = 1;
+}
+
+
+if move.againstWall.vert == 1
+{
+	ySpeed = -moveSpeed;
+	image_xscale = 1;
+}
+
+
+if move.againstWall.vert == -1
+{
+	ySpeed = moveSpeed;
+	image_xscale = 1;
 }

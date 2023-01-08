@@ -22,7 +22,8 @@ if myState != myStateLastFrame
 myStateLastFrame = myState;
 switchStateTimer++;
 
-
+orginX = x;
+orginY = y;
 
 
 switch myState
@@ -262,28 +263,23 @@ case State.Grabbing: //=========================================================
 knockback = false;
 speed = 0;
 myColor = c_white;
-if _throw
-{
-	
-	with instance_nearest(x,y,objBallCarry)
+	if _throw
+	{
+
+		switch facing
 		{
-			instance_destroy();
+			case Dir.North: instance_create_depth(x,y+16,depth,objBallThrow); break;
+			case Dir.South: instance_create_depth(x,y-16,depth,objBallThrow); break;
+			case Dir.East: instance_create_depth(x-16,y,depth,objBallThrow); break;
+			case Dir.West: instance_create_depth(x+16,y,depth,objBallThrow); break;
 		}
 	
-	switch facing
-	{
-		case Dir.North: instance_create_depth(x,y+16,depth,objBallThrow); break;
-		case Dir.South: instance_create_depth(x,y-16,depth,objBallThrow); break;
-		case Dir.East: instance_create_depth(x-16,y,depth,objBallThrow); break;
-		case Dir.West: instance_create_depth(x+16,y,depth,objBallThrow); break;
+	
+	
+		myState = State.Throwing;
+	
+	
 	}
-	
-	
-	
-	myState = State.Throwing;
-	
-	
-}
 	switch facing
 	{
 		case Dir.North: sprite_index = sprPlayerGrabbingN; image_xscale = 1; break;
@@ -293,37 +289,25 @@ if _throw
 	}
 	
 	
+	///Destroy the grabbed ball
 	var _grabbed = instance_nearest(x,y,objBall);
 	
 	with _grabbed
 	{
-		instance_create_depth(x,y,depth,objBallCarry);
 		instance_destroy()
 	}
-	var _grabbed = instance_nearest(x,y,objBallCarry);
 	
-	with _grabbed
-	{
-		xSpeed = objPlayer.xSpeed;
-		ySpeed = objPlayer.ySpeed;
-		//switch objPlayer.facing
-		//{
-		//	case Dir.North: if !place_meeting(objPlayer.x, objPlayer.y-16, objWall){ x = objPlayer.x; y = objPlayer.y-16; } break;
-		//	case Dir.South: if !place_meeting(objPlayer.x, objPlayer.y+16, objWall){ x = objPlayer.x; y = objPlayer.y+16; } break;
-		//	case Dir.East: if !place_meeting(objPlayer.x+16, objPlayer.y, objWall){ x = objPlayer.x+16; y = objPlayer.y; } break;
-		//	case Dir.West: if !place_meeting(objPlayer.x-16, objPlayer.y, objWall){ x = objPlayer.x-16; y = objPlayer.y; } break;
-		//}
-		
-		
-	}
 	
+	//create a new ball
 	if !_grab
 	{
-	
-		with instance_nearest(x,y,objBallCarry)
+		sprite_index = sprPlayer;
+		switch facing
 		{
-			instance_create_depth(x,y,depth,objBall);
-			instance_destroy();
+			case Dir.North: instance_create_depth(x,y-16,SortLayer.Object,objBall); break;
+			case Dir.South: instance_create_depth(x,y+16,SortLayer.Object,objBall); break;
+			case Dir.East: instance_create_depth(x+16,y,SortLayer.Object,objBall); break;
+			case Dir.West: instance_create_depth(x-16,y,SortLayer.Object,objBall); break;
 		}
 	
 		myState = State.Idle;
@@ -501,37 +485,33 @@ case State.GrabbingInPit: //====================================================
 	
 		with _grabbed
 		{
-			instance_create_depth(x,y,depth,objBallCarry);
 			instance_destroy()
 		}
 	}
 	
 	if !_grab
 	{
-	
-		with instance_nearest(x,y,objBallCarry)
+		switch facing
 		{
-			instance_create_depth(x,y,depth,objBall);
-			instance_destroy();
+			case Dir.North:  instance_create_depth(x,y+16,depth,objDamage); instance_create_depth(x,y-16,depth,objBall); break;
+			case Dir.South: instance_create_depth(x,y-16,depth,objDamage); instance_create_depth(x,y+16,depth,objBall); break;
+			case Dir.East: instance_create_depth(x-16,y,depth,objDamage); instance_create_depth(x+16,y,depth,objBall); break;
+			case Dir.West: instance_create_depth(x+16,y,depth,objDamage); instance_create_depth(x-16,y,depth,objBall); break;
 		}
-	
+
 		myState = State.InPit;
 	}
 	
-		if _throw
+	if _throw
 	{
-	
-		with instance_nearest(x,y,objBallCarry)
-		{
-			instance_destroy();
-		}
+		
 	
 		switch facing
 		{
-			case Dir.North: instance_create_depth(x,y+16,depth,objBall); break;
-			case Dir.South: instance_create_depth(x,y-16,depth,objBall); break;
-			case Dir.East: instance_create_depth(x-16,y,depth,objBall); break;
-			case Dir.West: instance_create_depth(x+16,y,depth,objBall); break;
+			case Dir.North:  instance_create_depth(x,y+16,depth,objDamage); instance_create_depth(x,y+16,depth,objBall); break;
+			case Dir.South: instance_create_depth(x,y-16,depth,objDamage); instance_create_depth(x,y-16,depth,objBall); break;
+			case Dir.East: instance_create_depth(x-16,y,depth,objDamage); instance_create_depth(x-16,y,depth,objBall); break;
+			case Dir.West: instance_create_depth(x+16,y,depth,objDamage); instance_create_depth(x+16,y,depth,objBall); break;
 		}
 	
 	

@@ -1,23 +1,21 @@
-movingDir = 3;
-
-_movespeed = .6;
+moveSpeed = 1;
 
 
-_up = false;
-_down = false;
-_left = false;
-_right = false;
+switch moveDir
 
-
-switch movingDir
 {
-	case 1:_up = true; break;
-	case 2:_down = true; break;
-	case 3:_left = true; break;
-	case 4:_right = true; break;
+	case 0: xSpeed = moveSpeed; ySpeed = 0; break;
+	case 1: xSpeed = 0; ySpeed = moveSpeed; break;
+	case 2: xSpeed = -moveSpeed; ySpeed = 0; break;
+	case 3: xSpeed = 0; ySpeed = -moveSpeed; break;
 	
 	
 }
 
+xSpeed = moveSpeed;
+ySpeed = 0;
+
 
 depth = SortLayer.Object;
+
+move = use_tdmc_enemy()
