@@ -19,3 +19,5 @@ switch movingDir
 	
 }
 
+
+depth = SortLayer.Object;

@@ -7,4 +7,4 @@ if room == Room0
 	
 }
 
-depth = -1000;
+depth = SortLayer.Above;
