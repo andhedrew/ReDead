@@ -304,13 +304,15 @@ if _throw
 	
 	with _grabbed
 	{
-		switch objPlayer.facing
-		{
-			case Dir.North: if !place_meeting(objPlayer.x, objPlayer.y-16, objWall){ x = objPlayer.x; y = objPlayer.y-16; } break;
-			case Dir.South: if !place_meeting(objPlayer.x, objPlayer.y+16, objWall){ x = objPlayer.x; y = objPlayer.y+16; } break;
-			case Dir.East: if !place_meeting(objPlayer.x+16, objPlayer.y, objWall){ x = objPlayer.x+16; y = objPlayer.y; } break;
-			case Dir.West: if !place_meeting(objPlayer.x-16, objPlayer.y, objWall){ x = objPlayer.x-16; y = objPlayer.y; } break;
-		}
+		xSpeed = objPlayer.xSpeed;
+		ySpeed = objPlayer.ySpeed;
+		//switch objPlayer.facing
+		//{
+		//	case Dir.North: if !place_meeting(objPlayer.x, objPlayer.y-16, objWall){ x = objPlayer.x; y = objPlayer.y-16; } break;
+		//	case Dir.South: if !place_meeting(objPlayer.x, objPlayer.y+16, objWall){ x = objPlayer.x; y = objPlayer.y+16; } break;
+		//	case Dir.East: if !place_meeting(objPlayer.x+16, objPlayer.y, objWall){ x = objPlayer.x+16; y = objPlayer.y; } break;
+		//	case Dir.West: if !place_meeting(objPlayer.x-16, objPlayer.y, objWall){ x = objPlayer.x-16; y = objPlayer.y; } break;
+		//}
 		
 		
 	}

@@ -9,3 +9,6 @@ event_inherited();
 
 
 move = use_tdmc();
+
+xSpeed = 0;
+ySpeed = 0;
