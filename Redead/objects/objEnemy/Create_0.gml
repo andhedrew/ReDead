@@ -19,3 +19,5 @@ ySpeed = 0;
 depth = SortLayer.Object;
 
 move = use_tdmc_enemy()
+
+damageBox = instance_create_depth(x,y,depth,objDamagePlayer);

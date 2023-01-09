@@ -1,6 +1,9 @@
 moving = false;
 xSpeed = 0;
 ySpeed = 0;
+knockbackX = 0;
+knockbackY = 0;
+knockbackSpd = 2;
 mySpeed = 2;
 
 enum State
@@ -21,9 +24,10 @@ myState = State.Idle;
 
 global.myCorpse = noone;
 
-myMaxHealth = 3;
+myMaxHealth = 6;
 myHealth = myMaxHealth;
 haveBeenDamaged = false
+invincibility = false;
 
 
 myColor = c_white;
@@ -45,13 +49,6 @@ facing = Dir.South;
 
 switchStateTimer = 0;
 myStateLastFrame = noone;
-
-
-knockback = false;
-knockingBack = noone;
-knockbackAmount = 15;
-knockbackTimer = 0;
-knockbackDir = 0;
 
 
 move = use_tdmc()

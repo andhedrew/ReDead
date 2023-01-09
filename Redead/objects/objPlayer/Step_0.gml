@@ -45,16 +45,6 @@ case State.Idle:  //============================================================
 	}
 	
 	myAlpha = 1;
-	
-	if haveBeenDamaged
-	{
-		myColor = c_red;
-	}
-	else
-	{
-		myColor = c_white;
-	}
-	
 		
 	if _die
 	{
@@ -80,6 +70,20 @@ case State.Idle:  //============================================================
 	{
 		myState = State.Walking;
 	}
+	
+	if haveBeenDamaged
+	{
+		xSpeed = knockbackX;
+		ySpeed = knockbackY;
+		
+		knockbackX = lerp(knockbackX, 0, 0.2)
+		knockbackY = lerp(knockbackY, 0, 0.2)
+		
+		if (knockbackX <= 0) and (knockbackY <= 0)
+		{
+			haveBeenDamaged = false
+		}
+	}
 
 	move.xSpdYSpd(xSpeed, ySpeed);
 	
@@ -97,18 +101,7 @@ case State.Walking:  //=========================================================
 	}
 	
 	myAlpha = 1;
-	
-	
-	//Flash red when damaged
-	if haveBeenDamaged
-	{
-		myColor = c_red;
-	}
-	else
-	{
-		myColor = c_white;
-	}
-	
+
 
 	//movement
 
@@ -145,7 +138,15 @@ case State.Walking:  //=========================================================
 	{
 		myState = State.Idle;
 	}
-
+	
+	if haveBeenDamaged
+	{
+		xSpeed = knockbackX;
+		ySpeed = knockbackY;
+		
+		knockbackX = lerp(knockbackX, 0, 0.2)
+		knockbackY = lerp(knockbackY, 0, 0.2)
+	}
 	
 	move.xSpdYSpd(xSpeed, ySpeed);
 	
@@ -490,12 +491,13 @@ case State.GrabbingInPit: //====================================================
 	
 	if !_grab
 	{
+		var _dmgOffset = 20;
 		switch facing
 		{
-			case Dir.North:  instance_create_depth(x,y+16,depth,objDamage); instance_create_depth(x,y-16,depth,objBall); break;
-			case Dir.South: instance_create_depth(x,y-16,depth,objDamage); instance_create_depth(x,y+16,depth,objBall); break;
-			case Dir.East: instance_create_depth(x-16,y,depth,objDamage); instance_create_depth(x+16,y,depth,objBall); break;
-			case Dir.West: instance_create_depth(x+16,y,depth,objDamage); instance_create_depth(x-16,y,depth,objBall); break;
+			case Dir.North:  instance_create_depth(x,y+_dmgOffset,depth,objDamage); instance_create_depth(x,y-16,depth,objBall); break;
+			case Dir.South: instance_create_depth(x,y-_dmgOffset,depth,objDamage); instance_create_depth(x,y+16,depth,objBall); break;
+			case Dir.East: instance_create_depth(x-_dmgOffset,y,depth,objDamage); instance_create_depth(x+16,y,depth,objBall); break;
+			case Dir.West: instance_create_depth(x+_dmgOffset,y,depth,objDamage); instance_create_depth(x-16,y,depth,objBall); break;
 		}
 
 		myState = State.InPit;
@@ -504,13 +506,13 @@ case State.GrabbingInPit: //====================================================
 	if _throw
 	{
 		
-	
+		var _dmgOffset = 20;
 		switch facing
 		{
-			case Dir.North:  instance_create_depth(x,y+16,depth,objDamage); instance_create_depth(x,y+16,depth,objBall); break;
-			case Dir.South: instance_create_depth(x,y-16,depth,objDamage); instance_create_depth(x,y-16,depth,objBall); break;
-			case Dir.East: instance_create_depth(x-16,y,depth,objDamage); instance_create_depth(x-16,y,depth,objBall); break;
-			case Dir.West: instance_create_depth(x+16,y,depth,objDamage); instance_create_depth(x+16,y,depth,objBall); break;
+			case Dir.North:  instance_create_depth(x,y+_dmgOffset,depth,objDamage); instance_create_depth(x,y+16,depth,objBall); break;
+			case Dir.South: instance_create_depth(x,y-_dmgOffset,depth,objDamage); instance_create_depth(x,y-16,depth,objBall); break;
+			case Dir.East: instance_create_depth(x-_dmgOffset,y,depth,objDamage); instance_create_depth(x-16,y,depth,objBall); break;
+			case Dir.West: instance_create_depth(x+_dmgOffset,y,depth,objDamage); instance_create_depth(x+16,y,depth,objBall); break;
 		}
 	
 	

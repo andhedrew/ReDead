@@ -1,3 +1,1 @@
-haveBeenDamaged = false;
-
-
+invincibility = false;

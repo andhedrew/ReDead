@@ -1,6 +1,9 @@
 var _speed = 3;
 image_speed = 1;
 
+
+
+
 switch facing
 {
 	case Dir.North: if place_meeting(x,y-1,objWall) { instance_destroy();} break;

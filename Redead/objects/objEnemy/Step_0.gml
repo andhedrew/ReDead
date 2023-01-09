@@ -1,3 +1,6 @@
+damageBox.x = x;
+damageBox.y = y;
+
 
 image_speed = .2;
 
