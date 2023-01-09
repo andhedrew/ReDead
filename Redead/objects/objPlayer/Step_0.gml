@@ -174,6 +174,7 @@ break;
 
 case State.Ghost: //================================================================================================================================================================//=
 	knockback = false;
+	depth = SortLayer.Player;
 	if switchStateTimer < 3
 	{
 		myColor = c_white;
@@ -191,12 +192,14 @@ case State.Ghost: //============================================================
 	{
 		ySpeed -= mySpeed;
 		facing = Dir.North;
+		image_xscale = 1;
 
 	}
 	if _down
 	{
 		ySpeed += mySpeed;
 		facing = Dir.South;
+		image_xscale = 1;
 
 	}
 	
@@ -204,12 +207,14 @@ case State.Ghost: //============================================================
 	{
 		xSpeed -= mySpeed;
 		facing = Dir.West;
+		image_xscale = -1;
 
 	}
 	if _right
 	{
 		xSpeed += mySpeed;
 		facing = Dir.East;
+		image_xscale = 1;
 
 	}
 	
