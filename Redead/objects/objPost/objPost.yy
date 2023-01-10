@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "objSpikes",
+  "name": "objPost",
   "spriteId": {
-    "name": "sprSpikes",
-    "path": "sprites/sprSpikes/sprSpikes.yy",
+    "name": "sprPost",
+    "path": "sprites/sprPost/sprPost.yy",
   },
   "solid": false,
   "visible": true,
@@ -12,8 +12,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objEnemyAvoid",
-    "path": "objects/objEnemyAvoid/objEnemyAvoid.yy",
+    "name": "objWall",
+    "path": "objects/objWall/objWall.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -27,9 +27,7 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
