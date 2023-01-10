@@ -268,29 +268,21 @@ case State.Grabbing: //=========================================================
 knockback = false;
 speed = 0;
 myColor = c_white;
-	if _throw
-	{
 
-		switch facing
-		{
-			case Dir.North: instance_create_depth(x,y+16,depth,objBallThrow); break;
-			case Dir.South: instance_create_depth(x,y-16,depth,objBallThrow); break;
-			case Dir.East: instance_create_depth(x-16,y,depth,objBallThrow); break;
-			case Dir.West: instance_create_depth(x+16,y,depth,objBallThrow); break;
-		}
-	
-	
-	
-		myState = State.Throwing;
-	
-	
-	}
 	switch facing
 	{
 		case Dir.North: sprite_index = sprPlayerGrabbingN; image_xscale = 1; break;
 		case Dir.South: sprite_index = sprPlayerGrabbingS; image_xscale = 1; break;
 		case Dir.East: sprite_index = sprPlayerGrabbingE; image_xscale = 1; break;
 		case Dir.West: sprite_index = sprPlayerGrabbingE; image_xscale = -1; break;
+	}
+	
+	switch facing
+	{
+		case Dir.North: var _avoid = instance_create_depth(x,y-16,SortLayer.Object,objDamage); _avoid.x = x; _avoid.y = y-16; break;
+		case Dir.South: var _avoid = instance_create_depth(x,y+16,SortLayer.Object,objDamage); _avoid.x = x; _avoid.y = y+16; break;
+		case Dir.East: var _avoid = instance_create_depth(x+16,y,SortLayer.Object,objDamage); _avoid.x = x+16; _avoid.y = y; break;
+		case Dir.West: var _avoid = instance_create_depth(x-16,y,SortLayer.Object,objDamage); _avoid.x = x-16; _avoid.y = y; break;
 	}
 	
 	
@@ -314,8 +306,49 @@ myColor = c_white;
 			case Dir.East: instance_create_depth(x+16,y,SortLayer.Object,objBall); break;
 			case Dir.West: instance_create_depth(x-16,y,SortLayer.Object,objBall); break;
 		}
-	
+		instance_destroy(_avoid);
 		myState = State.Idle;
+	}
+	
+	if _throw
+	{
+		var _wallBehindMe = true;
+
+		switch facing
+		{
+			case Dir.North: if !place_meeting(x,y+16,objWall)
+								{
+								instance_create_depth(x,y+16,depth,objBallThrow);
+								_wallBehindMe = false;
+								}
+								break;
+			case Dir.South: if !place_meeting(x,y-16,objWall) 
+								{
+								instance_create_depth(x,y-16,depth,objBallThrow); 
+								_wallBehindMe = false;
+								}
+								break;
+			case Dir.East: if !place_meeting(x-16,y,objWall) 
+							   {
+							   instance_create_depth(x-16,y,depth,objBallThrow); 
+							   _wallBehindMe = false;
+							   }
+							   break;
+			case Dir.West:  if !place_meeting(x+16,y,objWall)
+							   {
+							   instance_create_depth(x+16,y,depth,objBallThrow); 
+							   _wallBehindMe = false;
+							   }
+							   break;
+		}
+	
+		
+		if !_wallBehindMe
+		{
+			instance_destroy(_avoid);
+			myState = State.Throwing;
+		}
+
 	}
 	
 
