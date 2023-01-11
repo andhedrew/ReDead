@@ -175,7 +175,7 @@ break;
 case State.Ghost: //================================================================================================================================================================//=
 	knockback = false;
 	depth = SortLayer.Player;
-	if switchStateTimer < 3
+	if switchStateTimer > 60
 	{
 		myColor = c_white;
 	}
@@ -252,6 +252,7 @@ case State.Ghost: //============================================================
 		if global.myCorpse != noone
 		{
 			myColor = c_red
+			switchStateTimer = 0;
 			instance_destroy(global.myCorpse);
 			instance_create_depth(x,y,SortLayer.Above, objCorpseExplosion);
 		}

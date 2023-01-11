@@ -23,4 +23,14 @@ switch facing
 
 
 
-
+//destroy if off-screen
+var padding = 32;
+if x > room_width+padding or 
+	x < 0-padding or
+	y > room_height+padding or
+	y < 0-padding
+	{
+		with objBallSpawn
+			createBall = true;
+		instance_destroy();
+	}
