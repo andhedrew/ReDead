@@ -317,25 +317,25 @@ myColor = c_white;
 
 		switch facing
 		{
-			case Dir.North: if !place_meeting(x,y+16,objWall)
+			case Dir.North: if !place_meeting(x,y+16,objWall) or place_meeting(x,y+16,objDoor)
 								{
 								instance_create_depth(x,y+16,depth,objBallThrow);
 								_wallBehindMe = false;
 								}
 								break;
-			case Dir.South: if !place_meeting(x,y-16,objWall) 
+			case Dir.South: if !place_meeting(x,y-16,objWall) or place_meeting(x,y-16,objDoor)
 								{
 								instance_create_depth(x,y-16,depth,objBallThrow); 
 								_wallBehindMe = false;
 								}
 								break;
-			case Dir.East: if !place_meeting(x-16,y,objWall) 
+			case Dir.East: if !place_meeting(x-16,y,objWall) or place_meeting(x-16,y,objDoor)
 							   {
 							   instance_create_depth(x-16,y,depth,objBallThrow); 
 							   _wallBehindMe = false;
 							   }
 							   break;
-			case Dir.West:  if !place_meeting(x+16,y,objWall)
+			case Dir.West:  if !place_meeting(x+16,y,objWall) or place_meeting(x+16,y,objDoor)
 							   {
 							   instance_create_depth(x+16,y,depth,objBallThrow); 
 							   _wallBehindMe = false;
