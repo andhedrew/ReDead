@@ -57,3 +57,7 @@ moveGhost = use_tdmc_Solid()
 
 orginX = x;
 orginY = y;
+
+createBallAfterTossingInPit = false;
+destroyedGrabbedBall = false;
+grabbed = noone;

@@ -63,7 +63,7 @@ function use_tdmc_Solid(
             __iOwner.x = _startX + _x; 
             __iOwner.y = _startY + _y;
             if(!__iPlaceMeeting(__iOwner.x, __iOwner.y)) {
-              show_debug_message("Got the F out after " + string(_curRad / _precision) + " iterations");  
+              show_debug_message("Got out after " + string(_curRad / _precision) + " iterations");  
               return;
             }
           }

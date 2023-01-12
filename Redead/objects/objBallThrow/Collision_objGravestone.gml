@@ -4,7 +4,12 @@ instance_destroy(other);
 doNotRevive = true;
 
 with objBallSpawn
-createBall = true;
+{
+	if !instance_exists(myBall)
+	{
+		createBall = true;
+	}
+}
 
 instance_destroy();
 

@@ -1,2 +1,7 @@
 with objBallSpawn
-createBall = true;
+{
+	if !instance_exists(myBall)
+	{
+		createBall = true;
+	}
+}

@@ -10,10 +10,12 @@ if createBall
 && !place_meeting(x-_margin,y,objEnemy)
 && !place_meeting(x,y+_margin,objEnemy)
 && !place_meeting(x,y-_margin,objEnemy)
+&& !instance_exists(myBall)
 {
-	var _ball = instance_create_depth(x,y,depth-1,objBall);
-	with _ball
+	myBall = instance_create_depth(x,y,depth-1,objBall);
+	with myBall
 	{
+
 		finalDepth = depth;
 		_drawY = startY;
 		falling = true;
