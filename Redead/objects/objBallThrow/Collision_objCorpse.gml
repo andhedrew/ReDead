@@ -1,5 +1,5 @@
 
-if other.stealBallTimer > 10
+if other.stealBallTimer > 15
 {
 	with other
 	{

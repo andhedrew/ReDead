@@ -1,15 +1,18 @@
+var _invert = invert;
+
 if activated
 {
+	
 	with objPostRetractable
 	{
-		activated = true;
+		activated = !_invert;
 	}
 }
 else
 {
 	with objPostRetractable
 	{
-		activated = false;
+		activated = _invert;
 	}
 	
 }

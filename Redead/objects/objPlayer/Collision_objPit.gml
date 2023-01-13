@@ -25,13 +25,7 @@ if myState != State.Ghost && myState != State.GrabbingInPit && myState != State.
 		}
 		
 		sprite_index = sprPlayer;
-		switch facing
-		{
-			case Dir.North: instance_create_depth(x,y-16,SortLayer.Object,objBall); break;
-			case Dir.South: instance_create_depth(x,y+16,SortLayer.Object,objBall); break;
-			case Dir.East: instance_create_depth(x+16,y,SortLayer.Object,objBall); break;
-			case Dir.West: instance_create_depth(x-16,y,SortLayer.Object,objBall); break;
-		}
+
 	}
 	
 }

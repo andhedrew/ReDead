@@ -3,12 +3,19 @@ if !doNotRevive
 {
 	var xx = x;
 	var yy = y;
-	with objPlayer
+	if playerThrewMe
 	{
+		with objPlayer
+		{
 			
-		grabbed.x = xx;
+			grabbed.x = xx;
 			grabbed.y = yy;
-		instance_activate_object(grabbed);
+			instance_activate_object(grabbed);
 
+		}
+	}
+	else
+	{
+		instance_create_depth(x,y,SortLayer.Object, objBall);
 	}
 }

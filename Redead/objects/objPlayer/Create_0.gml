@@ -38,10 +38,10 @@ ghostTimer = ghostTimerMax;
 
 enum Dir
 {
-	North,
-	East,
-	South,
-	West,
+	North = 90,
+	East = 0,
+	South = 270,
+	West = 180,
 	
 }
 
@@ -61,3 +61,5 @@ orginY = y;
 createBallAfterTossingInPit = false;
 destroyedGrabbedBall = false;
 grabbed = noone;
+roomLastFrame = room;
+cancelMovement = false;

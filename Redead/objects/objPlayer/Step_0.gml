@@ -13,6 +13,29 @@ var _down_pressed = keyboard_check_pressed(vk_down);
 var _left_pressed = keyboard_check_pressed(vk_left);
 var _right_pressed = keyboard_check_pressed(vk_right);
 
+if room != roomLastFrame
+{
+	cancelMovement = true;
+}
+if !_up and !_down and !_left and !_right
+{
+	cancelMovement = false;
+}
+
+if cancelMovement
+{
+	
+	var _up = false;
+	var _down =  false;
+	var _left =  false;
+	var _right =  false;
+	var _grab =  false;
+	var _throw =  false;
+	var _die =  false;
+} 
+
+roomLastFrame = room;
+
 
 if myState != myStateLastFrame
 {
@@ -267,7 +290,6 @@ break;
 
 case State.Grabbing: //================================================================================================================================================================//
 knockback = false;
-speed = 0;
 myColor = c_white;
 var  _avoid = noone;
 
@@ -325,13 +347,9 @@ var  _avoid = noone;
 		destroyedGrabbedBall = true;
 	}
 	
-	
-	//create a new ball
 	if !_grab
 	{
 		sprite_index = sprPlayer;
-
-		
 		
 		switch facing
 		{
@@ -343,7 +361,6 @@ var  _avoid = noone;
 		}
 		
 		instance_activate_object(grabbed);
-
 		instance_destroy(_avoid);
 		destroyedGrabbedBall = false;
 		myState = State.Idle;
@@ -357,25 +374,29 @@ var  _avoid = noone;
 		{
 			case Dir.North: if !place_meeting(x,y+16,objWall) or place_meeting(x,y+16,objDoor)
 								{
-								instance_create_depth(x,y+16,depth,objBallThrow);
+								var _ball = instance_create_depth(x,y+16,depth,objBallThrow);
+								with _ball { playerThrewMe = true; }
 								_wallBehindMe = false;
 								}
 								break;
 			case Dir.South: if !place_meeting(x,y-16,objWall) or place_meeting(x,y-16,objDoor)
 								{
-								instance_create_depth(x,y-16,depth,objBallThrow); 
+								var _ball = instance_create_depth(x,y-16,depth,objBallThrow); 
+								with _ball { playerThrewMe = true; }
 								_wallBehindMe = false;
 								}
 								break;
 			case Dir.East: if !place_meeting(x-16,y,objWall) or place_meeting(x-16,y,objDoor)
 							   {
-							   instance_create_depth(x-16,y,depth,objBallThrow); 
+							  var _ball =  instance_create_depth(x-16,y,depth,objBallThrow); 
+							  with _ball { playerThrewMe = true; }
 							   _wallBehindMe = false;
 							   }
 							   break;
 			case Dir.West:  if !place_meeting(x+16,y,objWall) or place_meeting(x+16,y,objDoor)
 							   {
-							   instance_create_depth(x+16,y,depth,objBallThrow); 
+							   var _ball = instance_create_depth(x+16,y,depth,objBallThrow); 
+							   with _ball { playerThrewMe = true; }
 							   _wallBehindMe = false;
 							   }
 							   break;
@@ -455,11 +476,13 @@ if createBallAfterTossingInPit
 
 	switch facing
 	{
-		case Dir.North:  instance_create_depth(x,y+16,depth,objBall); break;
-		case Dir.South:  instance_create_depth(x,y-16,depth,objBall); break;
-		case Dir.East: instance_create_depth(x-16,y,depth,objBall); break;
-		case Dir.West:  instance_create_depth(x+16,y,depth,objBall); break;
+		case Dir.North: grabbed.x = x; grabbed.y = y+16; break;
+		case Dir.South: grabbed.x = x; grabbed.y = y-16; break;
+		case Dir.East: grabbed.x = x-16; grabbed.y = y; break;
+		case Dir.West: grabbed.x = x+16; grabbed.y = y; break;
+
 	}
+	instance_activate_object(grabbed);
 	createBallAfterTossingInPit = false;
 	
 }
@@ -489,22 +512,15 @@ if createBallAfterTossingInPit
 
 	switch facing
 	{
-		case Dir.North: instance_create_depth(x,y-16,depth,objBall); break;
-		case Dir.South:  instance_create_depth(x,y+16,depth,objBall); break;
-		case Dir.East: instance_create_depth(x+16,y,depth,objBall); break;
-		case Dir.West:  instance_create_depth(x-16,y,depth,objBall); break;
+		case Dir.North: grabbed.x = x; grabbed.y = y-16; break;
+		case Dir.South: grabbed.x = x; grabbed.y = y+16; break;
+		case Dir.East: grabbed.x = x+16; grabbed.y = y; break;
+		case Dir.West: grabbed.x = x-16; grabbed.y = y; break;
+
 	}
+	instance_activate_object(grabbed);
 	createBallAfterTossingInPit = false;
 	
-}
-
-if instance_exists(objBallCarry) && switchStateTimer < 3
-{
-	with instance_nearest(x,y,objBallCarry)
-	{
-		instance_create_depth(x,y,depth,objBall);
-		instance_destroy();
-	}
 }
 
 
@@ -606,14 +622,14 @@ case State.GrabbingInPit: //====================================================
 		case Dir.West: sprite_index = sprPlayerGrabbingE; image_xscale = -1; break;
 	}
 	
-	if _grab
+	if !destroyedGrabbedBall
 	{
-		var _grabbed = instance_nearest(x,y,objBall);
+		///Destroy the grabbed ball
+		grabbed = instance_nearest(x,y,objBall);
 	
-		with _grabbed
-		{
-			instance_destroy()
-		}
+		instance_deactivate_object(grabbed)
+
+		destroyedGrabbedBall = true;
 	}
 	
 	if !_grab
@@ -626,7 +642,7 @@ case State.GrabbingInPit: //====================================================
 			case Dir.East: instance_create_depth(x-_dmgOffset,y,depth,objDamage); createBallAfterTossingInPit = true; break;
 			case Dir.West: instance_create_depth(x+_dmgOffset,y,depth,objDamage); createBallAfterTossingInPit = true; break;
 		}
-
+		destroyedGrabbedBall = false;
 		myState = State.InPit;
 	}
 	
@@ -642,7 +658,7 @@ case State.GrabbingInPit: //====================================================
 			case Dir.West: instance_create_depth(x+_dmgOffset,y,depth,objDamage); createBallAfterTossingInPit = true; break;
 		}
 	
-	
+		destroyedGrabbedBall = false;
 		myState = State.Throwing;
 	
 	}

@@ -1,8 +1,10 @@
-var _speed = 3;
+var _speed = 2;
 image_speed = 1;
 
-
-
+if playerThrewMe
+{
+	facing = objPlayer.facing;
+}
 
 switch facing
 {
