@@ -19,3 +19,8 @@ if !doNotRevive
 		instance_create_depth(x,y,SortLayer.Object, objBall);
 	}
 }
+
+if !playerThrewMe
+{
+	instance_destroy(myDamageBox)
+}
