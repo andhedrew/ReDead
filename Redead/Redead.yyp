@@ -108,7 +108,6 @@
     {"id":{"name":"sprPost","path":"sprites/sprPost/sprPost.yy",},"order":26,},
     {"id":{"name":"objBallSpawn","path":"objects/objBallSpawn/objBallSpawn.yy",},"order":21,},
     {"id":{"name":"sprEmpty","path":"sprites/sprEmpty/sprEmpty.yy",},"order":44,},
-    {"id":{"name":"Room16","path":"rooms/Room16/Room16.yy",},"order":23,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
   "Options": [
@@ -149,7 +148,6 @@
     {"roomId":{"name":"Room6","path":"rooms/Room6/Room6.yy",},},
     {"roomId":{"name":"Room14","path":"rooms/Room14/Room14.yy",},},
     {"roomId":{"name":"Room15","path":"rooms/Room15/Room15.yy",},},
-    {"roomId":{"name":"Room16","path":"rooms/Room16/Room16.yy",},},
   ],
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Animation Curves","folderPath":"folders/Animation Curves.yy","order":12,},
