@@ -48,6 +48,7 @@
     {"id":{"name":"sprCorpseRaise","path":"sprites/sprCorpseRaise/sprCorpseRaise.yy",},"order":55,},
     {"id":{"name":"sprStart","path":"sprites/sprStart/sprStart.yy",},"order":24,},
     {"id":{"name":"objBallCarry","path":"objects/objBallCarry/objBallCarry.yy",},"order":10,},
+    {"id":{"name":"sprDamagePlayer","path":"sprites/sprDamagePlayer/sprDamagePlayer.yy",},"order":37,},
     {"id":{"name":"sprBallSpawn","path":"sprites/sprBallSpawn/sprBallSpawn.yy",},"order":20,},
     {"id":{"name":"no","path":"sprites/no/no.yy",},"order":57,},
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},"order":0,},

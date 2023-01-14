@@ -1,34 +1,46 @@
-firingTimer--;
 
-if firingTimer < 30 and firingTimer > 0
+if !instance_exists(myBall) or myBall == noone
 {
-	image_index = 1;
+	firingTimer--;
+
+	if firingTimer < 30 and firingTimer > 0
+	{
+		image_index = 1;
+	} else
+	{
+		image_index = 0;
+	}
 } else
 {
 	image_index = 0;
+	firingTimer = firingSpeed;
 }
 
 if firingTimer < 0
 {
-	switch image_angle //these are backwards, because the player facing sets the ball's direction normally.
+	if !instance_exists(myBall) or myBall == noone
 	{
-		case 0:
-			var _ball = instance_create_depth(x+16,y,SortLayer.Object, objBallThrow);
-			with _ball { facing = Dir.West}
-		break;
-		case 90:
-			var _ball = instance_create_depth(x,y-16,SortLayer.Object, objBallThrow);
-			with _ball { facing = Dir.South}
-		break;
-		case 180:
-			var _ball = instance_create_depth(x-16,y,SortLayer.Object, objBallThrow);
-			with _ball { facing = Dir.East}
-		break;
-		case 270:
-			var _ball = instance_create_depth(x,y+16,SortLayer.Object, objBallThrow);
-			with _ball { facing = Dir.North}
-		break;
 		
+		switch image_angle //these are backwards, because the player facing sets the ball's direction normally.
+		{
+			case 0:
+				myBall = instance_create_depth(x+16,y,SortLayer.Object, objBallThrow);
+				with myBall { facing = Dir.West; myCannon = id;}
+			break;
+			case 90:
+				myBall = instance_create_depth(x,y-16,SortLayer.Object, objBallThrow);
+				with myBall { facing = Dir.South;  myCannon = id;}
+			break;
+			case 180:
+				myBall = instance_create_depth(x-16,y,SortLayer.Object, objBallThrow);
+				with myBall { facing = Dir.East;  myCannon = id;}
+			break;
+			case 270:
+				myBall = instance_create_depth(x,y+16,SortLayer.Object, objBallThrow);
+				with myBall { facing = Dir.North;  myCannon = id;}
+			break;
+		
+		}
 	}
 	firingTimer = firingSpeed;
 }

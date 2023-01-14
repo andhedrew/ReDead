@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "objDamagePlayer",
   "spriteId": {
-    "name": "sprTrigger",
-    "path": "sprites/sprTrigger/sprTrigger.yy",
+    "name": "sprDamagePlayer",
+    "path": "sprites/sprDamagePlayer/sprDamagePlayer.yy",
   },
   "solid": false,
   "visible": true,

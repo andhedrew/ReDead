@@ -17,11 +17,15 @@ else
 	
 }
 
-if place_meeting(x,y,objPlayer) or 
-   place_meeting(x,y,objBall) or 
+if place_meeting(x,y,objBall) or 
    place_meeting(x,y,objEnemy) or 
    place_meeting(x,y,objCorpse) or
    place_meeting(x,y,objBallThrow)
+{
+	activated = true;
+	image_index = 1;
+} 
+else if  place_meeting(x,y,objPlayer) and objPlayer.myState != State.Ghost
 {
 	activated = true;
 	image_index = 1;

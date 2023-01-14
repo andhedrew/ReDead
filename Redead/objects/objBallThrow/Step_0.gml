@@ -1,7 +1,7 @@
 var _speed = 2;
 image_speed = 1;
 
-if playerThrewMe
+if playerThrewMe and !createdDamageBox
 {
 	facing = objPlayer.facing;
 	createdDamageBox = true;
@@ -21,11 +21,119 @@ if !playerThrewMe
 
 switch facing
 {
-	case Dir.North: if place_meeting(x,y+1,objWall) { instance_destroy();} break;
-	case Dir.South: if place_meeting(x,y-1,objWall) { instance_destroy();} break;
-	case Dir.East: if place_meeting(x-1,y,objWall) { instance_destroy();} break;
-	case Dir.West: if place_meeting(x+1,y,objWall) { instance_destroy();} break;
+	case Dir.North: if place_meeting(x,y+1,objDoor) { 
+														instance_destroy(objDoor);
+														doNotRevive = true;
+														with objBallSpawn
+														{  if !instance_exists(myBall)
+															{ createBall = true;}
+														}
+														instance_create_depth(x,y,depth,objBallBreak);
+														instance_destroy();
+													} 
+													break;
+	case Dir.South: if place_meeting(x,y-1,objDoor) {
+														instance_destroy(objDoor);
+														doNotRevive = true;
+														with objBallSpawn
+														{  if !instance_exists(myBall)
+															{ createBall = true;}
+														}
+														instance_create_depth(x,y,depth,objBallBreak);
+														instance_destroy();
+													} 
+													break;
+	case Dir.East: if place_meeting(x-1,y,objDoor) {
+														instance_destroy(objDoor);
+														doNotRevive = true;
+														with objBallSpawn
+														{  if !instance_exists(myBall)
+															{ createBall = true;}
+														}
+														instance_create_depth(x,y,depth,objBallBreak);
+														instance_destroy();
+													} 
+													break;
+	case Dir.West: if place_meeting(x+1,y,objDoor) { 
+														instance_destroy(objDoor);
+														doNotRevive = true;
+														with objBallSpawn
+														{  if !instance_exists(myBall)
+															{ createBall = true;}
+														}
+														instance_create_depth(x,y,depth,objBallBreak);
+														instance_destroy();
+													}
+													break;
 }
+
+switch facing
+{
+	case Dir.North: if place_meeting(x,y+1,objWall) 
+		{
+		if !playerThrewMe
+		{
+			var xx = x;
+			var yy = y;
+			with myCannon
+			{
+				myBall = instance_create_depth(xx,yy,SortLayer.Object, objBall);
+			}
+				instance_destroy(myDamageBox)
+			}
+			
+		
+		instance_destroy();
+		} 
+		break;
+	case Dir.South: if place_meeting(x,y-1,objWall) 
+	{ 
+		if !playerThrewMe
+		{
+			var xx = x;
+			var yy = y;
+			with myCannon
+			{
+				myBall = instance_create_depth(xx,yy,SortLayer.Object, objBall);
+			}
+				instance_destroy(myDamageBox)
+			}
+			
+		instance_destroy();
+		} 
+		break;
+	case Dir.East: if place_meeting(x-1,y,objWall) { 
+		if !playerThrewMe
+		{
+			var xx = x;
+			var yy = y;
+			with myCannon
+			{
+				myBall = instance_create_depth(xx,yy,SortLayer.Object, objBall);
+			}
+				instance_destroy(myDamageBox)
+			}
+			
+		instance_destroy();
+		} 
+		break;
+	case Dir.West: if place_meeting(x+1,y,objWall) { 
+		if !playerThrewMe
+		{
+			var xx = x;
+			var yy = y;
+			with myCannon
+			{
+				myBall = instance_create_depth(xx,yy,SortLayer.Object, objBall);
+			}
+				instance_destroy(myDamageBox)
+		}
+			
+		instance_destroy();
+		} break;
+}
+
+
 
 
 switch facing
