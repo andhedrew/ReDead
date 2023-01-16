@@ -30,6 +30,7 @@
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"objEnemy","path":"objects/objEnemy/objEnemy.yy",},},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"objGravestone","path":"objects/objGravestone/objGravestone.yy",},},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"objCorpse","path":"objects/objCorpse/objCorpse.yy",},},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"objWallBreakable","path":"objects/objWallBreakable/objWallBreakable.yy",},},
   ],
   "properties": [],
   "overriddenProperties": [],

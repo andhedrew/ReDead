@@ -20,7 +20,8 @@ else
 if place_meeting(x,y,objBall) or 
    place_meeting(x,y,objEnemy) or 
    place_meeting(x,y,objCorpse) or
-   place_meeting(x,y,objBallThrow)
+   place_meeting(x,y,objBallThrow) or
+   place_meeting(x,y,objEnemySmashed)
 {
 	activated = true;
 	image_index = 1;

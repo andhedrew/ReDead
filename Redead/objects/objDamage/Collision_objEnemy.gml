@@ -1,1 +1,3 @@
-instance_destroy(other)
+with other{
+	die();
+}

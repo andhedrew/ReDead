@@ -372,28 +372,28 @@ var  _avoid = noone;
 
 		switch facing
 		{
-			case Dir.North: if !place_meeting(x,y+16,objWall) or place_meeting(x,y+16,objDoor)
+			case Dir.North: if !place_meeting(x,y+16,objWall) or place_meeting(x,y+16,objDoor) or place_meeting(x,y+16,objGravestone)
 								{
 								var _ball = instance_create_depth(x,y+16,depth,objBallThrow);
 								with _ball { playerThrewMe = true; }
 								_wallBehindMe = false;
 								}
 								break;
-			case Dir.South: if !place_meeting(x,y-16,objWall) or place_meeting(x,y-16,objDoor)
+			case Dir.South: if !place_meeting(x,y-16,objWall) or place_meeting(x,y-16,objDoor) or place_meeting(x,y-16,objGravestone)
 								{
 								var _ball = instance_create_depth(x,y-16,depth,objBallThrow); 
 								with _ball { playerThrewMe = true; }
 								_wallBehindMe = false;
 								}
 								break;
-			case Dir.East: if !place_meeting(x-16,y,objWall) or place_meeting(x-16,y,objDoor)
+			case Dir.East: if !place_meeting(x-16,y,objWall) or place_meeting(x-16,y,objDoor) or place_meeting(x-16,y,objGravestone)
 							   {
 							  var _ball =  instance_create_depth(x-16,y,depth,objBallThrow); 
 							  with _ball { playerThrewMe = true; }
 							   _wallBehindMe = false;
 							   }
 							   break;
-			case Dir.West:  if !place_meeting(x+16,y,objWall) or place_meeting(x+16,y,objDoor)
+			case Dir.West:  if !place_meeting(x+16,y,objWall) or place_meeting(x+16,y,objDoor) or place_meeting(x+16,y,objGravestone)
 							   {
 							   var _ball = instance_create_depth(x+16,y,depth,objBallThrow); 
 							   with _ball { playerThrewMe = true; }

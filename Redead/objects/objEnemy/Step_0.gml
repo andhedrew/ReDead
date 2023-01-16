@@ -2,7 +2,7 @@ damageBox.x = x;
 damageBox.y = y;
 
 
-image_speed = .2;
+
 
 move.xSpdYSpd(xSpeed, ySpeed);
 
