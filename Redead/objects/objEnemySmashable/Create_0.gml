@@ -15,3 +15,5 @@ if moveDir != 0 && moveDir != 1 && moveDir != 2 && moveDir != 3
 	image_speed = _speed/100;
 }
 
+
+moveSpeed = .8;

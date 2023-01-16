@@ -12,7 +12,7 @@ function die(){
 		
 		case objEnemyLeavesCorpse:
 		instance_create_depth(x,y,SortLayer.Above, objEnemyDie);
-			instance_create_depth(x,y,SortLayer.Object, objCorpse);
+			instance_create_depth(x,y,SortLayer.Object, objCorpseRaiseAnimate);
 			instance_destroy();
 		break;
 		
