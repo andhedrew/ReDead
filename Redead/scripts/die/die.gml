@@ -6,7 +6,12 @@ function die(){
 	switch object_index
 	{
 		case objEnemySmashable:
-			instance_create_depth(x,y,SortLayer.Ground, objEnemySmashed);
+			var inst = instance_create_depth(x,y,SortLayer.Ground, objEnemySmashed);
+			var _returnDir = returnDir;
+			with inst
+			{
+				returnDir = _returnDir;
+			}
 			instance_destroy();
 		break;
 		

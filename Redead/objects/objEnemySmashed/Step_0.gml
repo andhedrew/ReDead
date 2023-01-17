@@ -19,7 +19,13 @@ if staysDownTimer < 0
 		}
 		else
 		{
-			instance_create_depth(x,y,SortLayer.Player, objEnemySmashable);
+			var _new = instance_create_depth(x,y,SortLayer.Player, objEnemySmashable);
+			var _returnDir = returnDir;
+			with _new
+			{
+				moveDir = _returnDir;
+				returnDir = _returnDir;
+			}
 			instance_destroy();
 		}
 	}

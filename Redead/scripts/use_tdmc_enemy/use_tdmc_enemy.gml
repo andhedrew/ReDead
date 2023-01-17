@@ -3,7 +3,7 @@ function use_tdmc_enemy(
   _placeMeeting = function(_x, _y){
     return place_meeting(_x, _y, objEnemyAvoid); //Replace objWall with your object 
   }, 
-  _cornerSlip = 16, 
+  _cornerSlip = 0, 
   _slipSpd = .5, 
   _catchupFactor = .5) {
     

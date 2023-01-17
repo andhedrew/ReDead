@@ -33,3 +33,10 @@ if move.againstWall.vert == -1
 	ySpeed = moveSpeed;
 	image_xscale = 1;
 }
+
+
+if moveDir != 0 && moveDir != 1 && moveDir != 2 && moveDir != 3
+{
+
+}
+

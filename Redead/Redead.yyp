@@ -98,6 +98,7 @@
     {"id":{"name":"objEnemy","path":"objects/objEnemy/objEnemy.yy",},"order":3,},
     {"id":{"name":"Room13","path":"rooms/Room13/Room13.yy",},"order":13,},
     {"id":{"name":"use_tdmc_enemy","path":"scripts/use_tdmc_enemy/use_tdmc_enemy.yy",},"order":3,},
+    {"id":{"name":"Room22","path":"rooms/Room22/Room22.yy",},"order":29,},
     {"id":{"name":"Room17","path":"rooms/Room17/Room17.yy",},"order":24,},
     {"id":{"name":"objTut","path":"objects/objTut/objTut.yy",},"order":43,},
     {"id":{"name":"objEnemyAvoid","path":"objects/objEnemyAvoid/objEnemyAvoid.yy",},"order":33,},
@@ -174,6 +175,7 @@
     {"roomId":{"name":"Room19","path":"rooms/Room19/Room19.yy",},},
     {"roomId":{"name":"Room20","path":"rooms/Room20/Room20.yy",},},
     {"roomId":{"name":"Room21","path":"rooms/Room21/Room21.yy",},},
+    {"roomId":{"name":"Room22","path":"rooms/Room22/Room22.yy",},},
   ],
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Animation Curves","folderPath":"folders/Animation Curves.yy","order":12,},

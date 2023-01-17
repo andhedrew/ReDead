@@ -1,4 +1,4 @@
-maxStaysDown = 180;
+maxStaysDown = 220;
 staysDownTimer = maxStaysDown;
 animationTimer = staysDownTimer-60;
 

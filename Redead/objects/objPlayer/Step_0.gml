@@ -69,7 +69,7 @@ case State.Idle:  //============================================================
 	
 	myAlpha = 1;
 		
-	if _die
+	if _die  and !place_meeting(x,y,objCorpse)
 	{
 		global.myCorpse = instance_create_depth(x,y,SortLayer.Ground, objCorpse);
 		myState = State.Ghost;
@@ -174,7 +174,7 @@ case State.Walking:  //=========================================================
 	move.xSpdYSpd(xSpeed, ySpeed);
 	
 	
-	if _die
+	if _die and !place_meeting(x,y,objCorpse)
 	{
 		global.myCorpse = instance_create_depth(x,y,depth, objCorpse);
 		myState = State.Ghost;

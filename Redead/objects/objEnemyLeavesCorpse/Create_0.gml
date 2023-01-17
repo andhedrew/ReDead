@@ -7,11 +7,4 @@
 // Inherit the parent event
 event_inherited();
 
-
-
-
-
-moveSpeed = .8;
-
-
-mySleepSprite = sprEnemySmashableSleep;
+mySleepSprite = sprEnemyCorpse;
