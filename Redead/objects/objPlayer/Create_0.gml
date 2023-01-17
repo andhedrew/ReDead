@@ -17,6 +17,7 @@ enum State
 	Throwing,
 	InPit,
 	GrabbingInPit,
+	FLAMEMODEON,
 	
 }
 
@@ -63,3 +64,5 @@ destroyedGrabbedBall = false;
 grabbed = noone;
 roomLastFrame = room;
 cancelMovement = false;
+
+flameModeDamage = noone;

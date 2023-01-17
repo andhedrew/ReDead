@@ -665,4 +665,76 @@ case State.GrabbingInPit: //====================================================
 	
 
 break;
+case State.FLAMEMODEON:
+
+	knockback = false;
+	depth = SortLayer.Above-1;
+	sprite_index = sprGhostMAD;
+	myAlpha = 1;
+	
+	
+	if flameModeDamage != noone
+	{
+		instance_destroy(flameModeDamage);
+	}
+	
+	flameModeDamage = instance_create_depth(x,y,depth, objDamage)
+		flameModeDamage.x = x;
+		flameModeDamage.y = y;
+	
+
+	
+	//movement
+	ySpeed = 0;
+	xSpeed = 0;
+	if _up 
+	{
+		ySpeed -= mySpeed;
+		facing = Dir.North;
+		image_xscale = 1;
+
+	}
+	if _down
+	{
+		ySpeed += mySpeed;
+		facing = Dir.South;
+		image_xscale = 1;
+
+	}
+	
+	if _left
+	{
+		xSpeed -= mySpeed;
+		facing = Dir.West;
+		image_xscale = -1;
+
+	}
+	if _right
+	{
+		xSpeed += mySpeed;
+		facing = Dir.East;
+		image_xscale = 1;
+
+	}
+	
+
+	moveGhost.xSpdYSpd(xSpeed, ySpeed);
+	
+	
+	instance_create_depth(x,y,SortLayer.Above, objPlayerDie);
+		
+	if _die or _grab
+	{
+		instance_create_depth(x,y,SortLayer.Above, objCorpseExplosion);
+	}
+	
+	if switchStateTimer > 120
+	{
+		myState = State.Ghost;
+	}
+	if place_meeting(x,y,objGhostFlameMode)
+	{
+		switchStateTimer = 0;
+	}
+break;
 }
