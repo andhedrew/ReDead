@@ -10,7 +10,7 @@ else
 	image_index = 0;
 	instance_activate_object(wall)
 	depth = SortLayer.Object;
-	if place_meeting(x,y,objPlayer)  && objPlayer.myState != State.Ghost
+	if place_meeting(x,y,objPlayer) && objPlayer.myState != State.Ghost
 	{
 		with objPlayer
 		{

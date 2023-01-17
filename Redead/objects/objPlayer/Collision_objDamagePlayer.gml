@@ -5,7 +5,7 @@ if myState != State.Ghost
 		myHealth--;
 		if myHealth <= 0
 		{
-			
+			instance_create_depth(x,y,SortLayer.Above, objPlayerDie);
 			myState = State.Ghost
 			myHealth = myMaxHealth;
 		}

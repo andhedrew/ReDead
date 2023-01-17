@@ -1,4 +1,4 @@
-moveSpeed = 1;
+
 
 
 xSpeed = 0;

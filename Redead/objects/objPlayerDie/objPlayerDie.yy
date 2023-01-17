@@ -1,18 +1,15 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "objPostRetractable",
+  "name": "objPlayerDie",
   "spriteId": {
-    "name": "sprPostR",
-    "path": "sprites/sprPostR/sprPostR.yy",
+    "name": "sprExplode",
+    "path": "sprites/sprExplode/sprExplode.yy",
   },
   "solid": false,
   "visible": true,
   "managed": true,
-  "spriteMaskId": {
-    "name": "sprTrigger",
-    "path": "sprites/sprTrigger/sprTrigger.yy",
-  },
+  "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,
   "physicsObject": false,

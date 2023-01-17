@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "objPostRetractable",
+  "name": "objPostRetractable2",
   "spriteId": {
-    "name": "sprPostR",
-    "path": "sprites/sprPostR/sprPostR.yy",
+    "name": "sprPostR2",
+    "path": "sprites/sprPostR2/sprPostR2.yy",
   },
   "solid": false,
   "visible": true,

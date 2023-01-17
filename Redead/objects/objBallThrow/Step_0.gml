@@ -53,10 +53,10 @@ switch facing
 
 switch facing
 {
-	case Dir.North: if place_meeting(x,y+1,objWall) { instance_destroy();} break;
-	case Dir.South: if place_meeting(x,y-1,objWall) { instance_destroy();} break;
-	case Dir.East: if place_meeting(x-1,y,objWall) { instance_destroy();} break;
-	case Dir.West: if place_meeting(x+1,y,objWall) { instance_destroy();} break;
+	case Dir.North: if place_meeting(x,y+1,objWall) and !place_meeting(x,y+1,objGravestone) { instance_destroy();} break;
+	case Dir.South: if place_meeting(x,y-1,objWall) and !place_meeting(x,y-1,objGravestone) { instance_destroy();} break;
+	case Dir.East: if place_meeting(x-1,y,objWall) and !place_meeting(x-1,y,objGravestone) { instance_destroy();} break;
+	case Dir.West: if place_meeting(x+1,y,objWall) and !place_meeting(x+1,y,objGravestone) { instance_destroy();} break;
 }
 
 
