@@ -25,14 +25,29 @@ if place_meeting(x,y,objBall) or
 {
 	activated = true;
 	image_index = 1;
+	if !playedSound
+	{
+		audio_play_sound(dirt,1,false);
+		playedSound = true;
+	}
 } 
 else if  place_meeting(x,y,objPlayer) and objPlayer.myState != State.Ghost
 {
 	activated = true;
 	image_index = 1;
+	if !playedSound
+	{
+		audio_play_sound(dirt,1,false);
+		playedSound = true;
+	}
 }
 else
 {
 	activated = false;
 	image_index = 0;
+	if playedSound
+	{
+		audio_play_sound(dirt,1,false);
+		playedSound = false;
+	}
 }

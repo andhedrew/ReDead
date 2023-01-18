@@ -52,7 +52,8 @@ orginY = y;
 switch myState
 {
 case State.Idle:  //================================================================================================================================================================//
-
+	x=round(x/8) * 8; 
+	y=round(y/8) * 8; 
 	image_speed = 0;
 	image_index = 0;
 
@@ -173,7 +174,6 @@ case State.Walking:  //=========================================================
 	
 	move.xSpdYSpd(xSpeed, ySpeed);
 	
-	
 	if _die and !place_meeting(x,y,objCorpse)
 	{
 		global.myCorpse = instance_create_depth(x,y,depth, objCorpse);
@@ -196,6 +196,12 @@ case State.Walking:  //=========================================================
 break;
 
 case State.Ghost: //================================================================================================================================================================//=
+	if switchStateTimer < 2
+	{
+		audio_play_sound(deathPlayer,1,false);
+		audio_play_sound(moan,0,false);
+	}
+	
 	knockback = false;
 	depth = SortLayer.Player;
 	if switchStateTimer > 60
@@ -262,6 +268,10 @@ case State.Ghost: //============================================================
 		{
 			x = global.myCorpse.x;
 			y = global.myCorpse.y;
+				
+			audio_play_sound(revivePlayer,1,false);
+		
+	
 			myState = State.Idle;
 			instance_destroy(global.myCorpse);
 			global.myCorpse = noone;
@@ -289,6 +299,11 @@ myColor = c_white;
 break;
 
 case State.Grabbing: //================================================================================================================================================================//
+if switchStateTimer < 2
+{
+	audio_play_sound(grab,1,false);
+}
+
 knockback = false;
 myColor = c_white;
 var  _avoid = noone;
@@ -363,6 +378,7 @@ var  _avoid = noone;
 		instance_activate_object(grabbed);
 		instance_destroy(_avoid);
 		destroyedGrabbedBall = false;
+		audio_play_sound(grab,1,false);
 		myState = State.Idle;
 	}
 	
@@ -506,6 +522,10 @@ knockback = false;
 break;
 
 case State.InPit: //================================================================================================================================================================//
+if switchStateTimer < 2
+{
+	audio_play_sound(dirt, 1, false);
+}
 
 if createBallAfterTossingInPit
 {
@@ -524,22 +544,22 @@ if createBallAfterTossingInPit
 }
 
 
-if _up_pressed && facing == Dir.North && !place_meeting(x,y-16,objWall) && switchStateTimer > 5
+if _up_pressed && facing == Dir.North && !place_meeting(x,y-16,objWall) && switchStateTimer > 5 && !place_meeting(x,y-16,objSpikes)
 {
 	y -= 16;
 	myState = State.Idle;
 }
-if _down_pressed && facing == Dir.South && !place_meeting(x,y+16,objWall) && switchStateTimer > 5
+if _down_pressed && facing == Dir.South && !place_meeting(x,y+16,objWall) && switchStateTimer > 5 && !place_meeting(x,y+16,objSpikes)
 {
 	y += 16;
 	myState = State.Idle;
 }
-if _right_pressed && facing == Dir.East && !place_meeting(x+16,y,objWall) && switchStateTimer > 5
+if _right_pressed && facing == Dir.East && !place_meeting(x+16,y,objWall) && switchStateTimer > 5 && !place_meeting(x+16,y,objSpikes)
 {
 	x += 16;
 	myState = State.Idle;
 }
-if _left_pressed && facing == Dir.West && !place_meeting(x-16,y,objWall) && switchStateTimer > 5
+if _left_pressed && facing == Dir.West && !place_meeting(x-16,y,objWall) && switchStateTimer > 5 && !place_meeting(x-16,y,objSpikes)
 {
 	x -= 16;
 	myState = State.Idle;
@@ -613,6 +633,11 @@ break;
 case State.GrabbingInPit: //================================================================================================================================================================//
 
 
+	if switchStateTimer < 2
+	{
+		audio_play_sound(grab,1,false);
+	}
+
 	
 	switch facing
 	{
@@ -643,6 +668,7 @@ case State.GrabbingInPit: //====================================================
 			case Dir.West: instance_create_depth(x+_dmgOffset,y,depth,objDamage); createBallAfterTossingInPit = true; break;
 		}
 		destroyedGrabbedBall = false;
+		audio_play_sound(grab,1,false);
 		myState = State.InPit;
 	}
 	
@@ -665,7 +691,7 @@ case State.GrabbingInPit: //====================================================
 	
 
 break;
-case State.FLAMEMODEON:
+case State.FLAMEMODEON: //================================================================================================================================================================//
 
 	knockback = false;
 	depth = SortLayer.Above-1;

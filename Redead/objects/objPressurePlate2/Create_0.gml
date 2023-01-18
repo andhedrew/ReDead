@@ -5,3 +5,4 @@ image_index = 0;
 
 depth = SortLayer.GroundBelow;
 
+playedSound = false;
