@@ -1,6 +1,6 @@
 
 function use_tdmc_enemy(
-  _placeMeeting = function(_x, _y){
+  _placeMeeting_enemy = function(_x, _y){
     return place_meeting(_x, _y, objEnemyAvoid); //Replace objWall with your object 
   }, 
   _cornerSlip = 0, 
@@ -20,9 +20,9 @@ function use_tdmc_enemy(
     __iIgnoreCollision: false,
     __iSpriteCatchupFactor: _catchupFactor,
     
-    __iPlaceMeeting: _placeMeeting,
+    __iPlaceMeeting: _placeMeeting_enemy,
     
-    __iCornerSlipVert: function(_dir) {
+    __iCornerSlipVert_enemy: function(_dir) {
     	for(var _i = 1; _i <= __iCornerSlip; _i++) {
     		if(!__iPlaceMeeting(__iOwner.x + _dir, __iOwner.y - _i)) return -1;	
         if(!__iPlaceMeeting(__iOwner.x + _dir, __iOwner.y + _i)) return 1;
@@ -30,7 +30,7 @@ function use_tdmc_enemy(
     	return 0;
     },
 
-    __iCornerSlipHori: function(_dir) {
+    __iCornerSlipHori_enemy: function(_dir) {
     	for(var _i = 1; _i <= __iCornerSlip; _i++) {
     		if(!__iPlaceMeeting(__iOwner.x - _i, __iOwner.y + _dir)) return -1;	
         if(!__iPlaceMeeting(__iOwner.x + _i, __iOwner.y + _dir)) return 1;
@@ -38,19 +38,19 @@ function use_tdmc_enemy(
     	return 0;
     },
     
-    __iApproach: function(_start, _target, _step) {
+    __iApproach_enemy: function(_start, _target, _step) {
     	if (_start < _target)
     	    return min(_start + _step, _target); 
     	else
     	    return max(_start - _step, _target);
     },
     
-    __iUpdateDrawPos: function() {
+    __iUpdateDrawPos_enemy: function() {
       drawX = lerp(drawX, __iOwner.x, __iSpriteCatchupFactor);
       drawY = lerp(drawY, __iOwner.y, __iSpriteCatchupFactor);
     },
     
-    __iGtfo: function() {
+    __iGtfo_enemy: function() {
       var _precision = 1; //Feel free to adjust this to be higher. 1 is a bit extreme
       if(!__iPlaceMeeting(__iOwner.x, __iOwner.y)) return;
       var _curRad = _precision;
@@ -73,13 +73,13 @@ function use_tdmc_enemy(
     },
     
     ///@func spdDir(speed, direction)
-    spdDir: function(_spd, _dir) {
-      xSpdYSpd(lengthdir_x(_spd, _dir), lengthdir_y(_spd, _dir))
+    spdDir_enemy: function(_spd, _dir) {
+      xSpdYSpd_enemy(lengthdir_x(_spd, _dir), lengthdir_y(_spd, _dir))
     },
     
     ///@func xSpdYSpd(x speed, y speed)
-    xSpdYSpd: function(_xSpd, _ySpd) {
-      __iGtfo();
+    xSpdYSpd_enemy: function(_xSpd, _ySpd) {
+      __iGtfo_enemy();
     	
       againstWall.hori = 0; againstWall.vert = 0;
       
@@ -94,7 +94,7 @@ function use_tdmc_enemy(
         //Hori
         if(abs(__iXSpdLeft) >= 1) {
           var _dir = sign(__iXSpdLeft);
-          __iXSpdLeft = __iApproach(__iXSpdLeft, 0, 1);
+          __iXSpdLeft = __iApproach_enemy(__iXSpdLeft, 0, 1);
           if(__iIgnoreCollision || !__iPlaceMeeting(__iOwner.x + _dir, __iOwner.y)) {
             __iOwner.x += _dir;
             _againstHori = 0;
@@ -112,7 +112,7 @@ function use_tdmc_enemy(
     		//Vert
         if(abs(__iYSpdLeft) >= 1) {
           var _dir = sign(__iYSpdLeft);
-          __iYSpdLeft = __iApproach(__iYSpdLeft, 0, 1);
+          __iYSpdLeft = __iApproach_enemy(__iYSpdLeft, 0, 1);
           if(__iIgnoreCollision || !__iPlaceMeeting(__iOwner.x, __iOwner.y + _dir)) {
             __iOwner.y += _dir;
             _againstVert = 0;
@@ -136,18 +136,18 @@ function use_tdmc_enemy(
       
       //Go around Corners
       if(againstWall.hori != 0 && againstWall.vert == 0) {
-          __iYSpdLeft += (__iCornerSlipVert(againstWall.hori) * __iCornerSlipSpeedFactor);
+          __iYSpdLeft += (__iCornerSlipVert_enemy(againstWall.hori) * __iCornerSlipSpeedFactor);
       }
       
       if(againstWall.vert != 0 && againstWall.hori == 0) {
-          __iXSpdLeft += (__iCornerSlipHori(againstWall.vert) * __iCornerSlipSpeedFactor);
+          __iXSpdLeft += (__iCornerSlipHori_enemy(againstWall.vert) * __iCornerSlipSpeedFactor);
       }
       
       if(_againstVert != 0 || _againstHori != 0) {
         againstWall.hori = _againstHori;
         againstWall.vert = _againstVert;
       }
-      __iUpdateDrawPos();
+      __iUpdateDrawPos_enemy();
     }
   }
 }

@@ -4,7 +4,7 @@ damageBox.y = y;
 
 
 
-move.xSpdYSpd(xSpeed, ySpeed);
+move.xSpdYSpd_enemy(xSpeed, ySpeed);
 
 
 if move.againstWall.hori == 1 

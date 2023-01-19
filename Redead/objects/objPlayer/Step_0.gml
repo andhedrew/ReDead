@@ -248,7 +248,7 @@ case State.Ghost: //============================================================
 	}
 	
 
-	moveGhost.xSpdYSpd(xSpeed, ySpeed);
+	moveGhost.xSpdYSpd_solid(xSpeed, ySpeed);
 	
 	
 	if place_meeting(x,y,objCorpse)
@@ -744,7 +744,7 @@ case State.FLAMEMODEON: //======================================================
 	}
 	
 
-	moveGhost.xSpdYSpd(xSpeed, ySpeed);
+	moveGhost.xSpdYSpd_solid(xSpeed, ySpeed);
 	
 	
 	instance_create_depth(x,y,SortLayer.Above, objPlayerDie);
