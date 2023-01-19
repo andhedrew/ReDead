@@ -2,10 +2,7 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "objCannon",
-  "spriteId": {
-    "name": "sprCannon",
-    "path": "sprites/sprCannon/sprCannon.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "managed": true,

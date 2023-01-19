@@ -20,20 +20,20 @@ function use_tdmc_enemy(
     __iIgnoreCollision: false,
     __iSpriteCatchupFactor: _catchupFactor,
     
-    __iPlaceMeeting: _placeMeeting_enemy,
+    __iPlaceMeeting_enemy: _placeMeeting_enemy,
     
     __iCornerSlipVert_enemy: function(_dir) {
     	for(var _i = 1; _i <= __iCornerSlip; _i++) {
-    		if(!__iPlaceMeeting(__iOwner.x + _dir, __iOwner.y - _i)) return -1;	
-        if(!__iPlaceMeeting(__iOwner.x + _dir, __iOwner.y + _i)) return 1;
+    		if(!__iPlaceMeeting_enemy(__iOwner.x + _dir, __iOwner.y - _i)) return -1;	
+        if(!__iPlaceMeeting_enemy(__iOwner.x + _dir, __iOwner.y + _i)) return 1;
       }
     	return 0;
     },
 
     __iCornerSlipHori_enemy: function(_dir) {
     	for(var _i = 1; _i <= __iCornerSlip; _i++) {
-    		if(!__iPlaceMeeting(__iOwner.x - _i, __iOwner.y + _dir)) return -1;	
-        if(!__iPlaceMeeting(__iOwner.x + _i, __iOwner.y + _dir)) return 1;
+    		if(!__iPlaceMeeting_enemy(__iOwner.x - _i, __iOwner.y + _dir)) return -1;	
+        if(!__iPlaceMeeting_enemy(__iOwner.x + _i, __iOwner.y + _dir)) return 1;
       }
     	return 0;
     },
@@ -52,7 +52,7 @@ function use_tdmc_enemy(
     
     __iGtfo_enemy: function() {
       var _precision = 1; //Feel free to adjust this to be higher. 1 is a bit extreme
-      if(!__iPlaceMeeting(__iOwner.x, __iOwner.y)) return;
+      if(!__iPlaceMeeting_enemy(__iOwner.x, __iOwner.y)) return;
       var _curRad = _precision;
       var _startX = __iOwner.x;
       var _startY = __iOwner.y;
@@ -62,7 +62,7 @@ function use_tdmc_enemy(
             if(_x > _curRad && _y > _curRad && _x < _curRad && _y < _curRad) continue;
             __iOwner.x = _startX + _x; 
             __iOwner.y = _startY + _y;
-            if(!__iPlaceMeeting(__iOwner.x, __iOwner.y)) {
+            if(!__iPlaceMeeting_enemy(__iOwner.x, __iOwner.y)) {
               show_debug_message("Got out after " + string(_curRad / _precision) + " iterations");  
               return;
             }
@@ -95,14 +95,14 @@ function use_tdmc_enemy(
         if(abs(__iXSpdLeft) >= 1) {
           var _dir = sign(__iXSpdLeft);
           __iXSpdLeft = __iApproach_enemy(__iXSpdLeft, 0, 1);
-          if(__iIgnoreCollision || !__iPlaceMeeting(__iOwner.x + _dir, __iOwner.y)) {
+          if(__iIgnoreCollision || !__iPlaceMeeting_enemy(__iOwner.x + _dir, __iOwner.y)) {
             __iOwner.x += _dir;
             _againstHori = 0;
           } else {
             _againstHori = _dir;
-            if(!__iPlaceMeeting(__iOwner.x + _dir, __iOwner.y - 1))
+            if(!__iPlaceMeeting_enemy(__iOwner.x + _dir, __iOwner.y - 1))
               __iYSpdLeft -= 1;
-    				else if(!__iPlaceMeeting(__iOwner.x + _dir, __iOwner.y + 1))
+    				else if(!__iPlaceMeeting_enemy(__iOwner.x + _dir, __iOwner.y + 1))
     					__iYSpdLeft += 1;
             else
               againstWall.hori = _dir;  
@@ -113,14 +113,14 @@ function use_tdmc_enemy(
         if(abs(__iYSpdLeft) >= 1) {
           var _dir = sign(__iYSpdLeft);
           __iYSpdLeft = __iApproach_enemy(__iYSpdLeft, 0, 1);
-          if(__iIgnoreCollision || !__iPlaceMeeting(__iOwner.x, __iOwner.y + _dir)) {
+          if(__iIgnoreCollision || !__iPlaceMeeting_enemy(__iOwner.x, __iOwner.y + _dir)) {
             __iOwner.y += _dir;
             _againstVert = 0;
           } else {
             _againstVert = _dir;
-            if(!__iPlaceMeeting(__iOwner.x - 1, __iOwner.y + _dir))
+            if(!__iPlaceMeeting_enemy(__iOwner.x - 1, __iOwner.y + _dir))
               __iXSpdLeft -= 1;
-    				else if(!__iPlaceMeeting(__iOwner.x + 1, __iOwner.y + _dir))
+    				else if(!__iPlaceMeeting_enemy(__iOwner.x + 1, __iOwner.y + _dir))
     					__iXSpdLeft += 1;	
             else
               againstWall.vert = _dir;  

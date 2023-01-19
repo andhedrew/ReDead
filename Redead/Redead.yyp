@@ -50,7 +50,6 @@
     {"id":{"name":"sprExplodeBig","path":"sprites/sprExplodeBig/sprExplodeBig.yy",},"order":32,},
     {"id":{"name":"jump","path":"sounds/jump/jump.yy",},"order":9,},
     {"id":{"name":"sprTrigger","path":"sprites/sprTrigger/sprTrigger.yy",},"order":44,},
-    {"id":{"name":"sprCannon","path":"sprites/sprCannon/sprCannon.yy",},"order":24,},
     {"id":{"name":"sprPlayerThrowN","path":"sprites/sprPlayerThrowN/sprPlayerThrowN.yy",},"order":19,},
     {"id":{"name":"ballRunningIntoWall","path":"sounds/ballRunningIntoWall/ballRunningIntoWall.yy",},"order":3,},
     {"id":{"name":"objPressspace","path":"objects/objPressspace/objPressspace.yy",},"order":5,},
