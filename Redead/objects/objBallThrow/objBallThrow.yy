@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "objBallThrow",
   "spriteId": {
-    "name": "SprRollingBall",
-    "path": "sprites/SprRollingBall/SprRollingBall.yy",
+    "name": "sprRollingBall",
+    "path": "sprites/sprRollingBall/sprRollingBall.yy",
   },
   "solid": false,
   "visible": true,

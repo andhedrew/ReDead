@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "objBallFallInhole",
   "spriteId": {
-    "name": "SprBall",
-    "path": "sprites/SprBall/SprBall.yy",
+    "name": "sprBall",
+    "path": "sprites/sprBall/sprBall.yy",
   },
   "solid": false,
   "visible": true,

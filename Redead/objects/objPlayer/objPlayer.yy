@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "objPlayer",
   "spriteId": {
-    "name": "sprPlayer",
-    "path": "sprites/sprPlayer/sprPlayer.yy",
+    "name": "sprPlayerIdle",
+    "path": "sprites/sprPlayerIdle/sprPlayerIdle.yy",
   },
   "solid": false,
   "visible": true,

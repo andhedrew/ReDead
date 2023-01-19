@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "objBallBreak",
   "spriteId": {
-    "name": "SprBallBreak",
-    "path": "sprites/SprBallBreak/SprBallBreak.yy",
+    "name": "sprBallBreak",
+    "path": "sprites/sprBallBreak/sprBallBreak.yy",
   },
   "solid": false,
   "visible": true,

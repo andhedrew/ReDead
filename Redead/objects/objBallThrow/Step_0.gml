@@ -1,5 +1,4 @@
 var _speed = 2;
-image_speed = 1;
 
 
 
@@ -64,10 +63,10 @@ switch facing
 
 switch facing
 {
-	case Dir.North: y+= _speed; break;
-	case Dir.South: y-= _speed; break;
-	case Dir.East: x-= _speed; break;
-	case Dir.West: x+= _speed; break;
+	case Dir.North: y+= _speed; image_speed = -1; image_angle = 90;break;
+	case Dir.South: y-= _speed; image_speed = 1; image_angle = 90;break;
+	case Dir.East: x-= _speed;image_speed = -1; image_angle = 0; break;
+	case Dir.West: x+= _speed; image_speed = 1;  image_angle = 0;break;
 }
 
 

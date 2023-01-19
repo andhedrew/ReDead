@@ -52,7 +52,7 @@ orginY = y;
 switch myState
 {
 case State.Idle:  //================================================================================================================================================================//
-
+	sprite_index = sprPlayerIdle;
 	image_speed = 0;
 	image_index = 0;
 
@@ -61,10 +61,10 @@ case State.Idle:  //============================================================
 
 	switch facing
 	{
-		case Dir.North: sprite_index = sprPlayerN; image_xscale = 1; break;
-		case Dir.South: sprite_index = sprPlayer; image_xscale = 1; break;
-		case Dir.East: sprite_index = sprPlayer; image_xscale = 1; break;
-		case Dir.West: sprite_index = sprPlayer; image_xscale = -1; break;
+		case Dir.North: sprite_index = sprPlayerNIdle; image_xscale = 1; break;
+		case Dir.South: sprite_index = sprPlayerIdle; image_xscale = 1; break;
+		case Dir.East: sprite_index = sprPlayerIdle; image_xscale = 1; break;
+		case Dir.West: sprite_index = sprPlayerIdle; image_xscale = -1; break;
 	}
 	
 	myAlpha = 1;
