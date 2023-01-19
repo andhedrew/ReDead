@@ -5,7 +5,7 @@ var _right = keyboard_check(vk_right);
 var _grab = keyboard_check(ord("X"));
 var _throw = keyboard_check_pressed(ord("Z"));
 var _die = keyboard_check_pressed(vk_space);
-var _movespeed = 1;
+
 
 
 var _up_pressed = keyboard_check_pressed(vk_up);

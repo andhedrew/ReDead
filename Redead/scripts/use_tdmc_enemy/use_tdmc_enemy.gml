@@ -1,4 +1,4 @@
-///@func use_tdmc([place meeting func = place_meeting], [corner slip = 16], [corner slip speed = .5], [sprite catchup factor = .5])
+
 function use_tdmc_enemy(
   _placeMeeting = function(_x, _y){
     return place_meeting(_x, _y, objEnemyAvoid); //Replace objWall with your object 

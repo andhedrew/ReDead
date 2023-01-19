@@ -1,4 +1,4 @@
-///@func use_tdmc([place meeting func = place_meeting], [corner slip = 16], [corner slip speed = .5], [sprite catchup factor = .5])
+
 function use_tdmc_Solid(
   _placeMeeting = function(_x, _y){
     return place_meeting(_x, _y, objSolid); //Replace objWall with your object 

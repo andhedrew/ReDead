@@ -1,4 +1,4 @@
-moving = false;
+
 xSpeed = 0;
 ySpeed = 0;
 knockbackX = 0;
@@ -34,8 +34,6 @@ invincibility = false;
 myColor = c_white;
 myAlpha = 1;
 
-ghostTimerMax = 80;
-ghostTimer = ghostTimerMax;
 
 enum Dir
 {
