@@ -52,8 +52,7 @@ orginY = y;
 switch myState
 {
 case State.Idle:  //================================================================================================================================================================//
-	x=round(x/8) * 8; 
-	y=round(y/8) * 8; 
+
 	image_speed = 0;
 	image_index = 0;
 
@@ -170,6 +169,7 @@ case State.Walking:  //=========================================================
 		
 		knockbackX = lerp(knockbackX, 0, 0.2)
 		knockbackY = lerp(knockbackY, 0, 0.2)
+		
 	}
 	
 	move.xSpdYSpd(xSpeed, ySpeed);
@@ -304,7 +304,7 @@ if switchStateTimer < 2
 	audio_play_sound(grab,1,false);
 }
 
-knockback = false;
+
 myColor = c_white;
 var  _avoid = noone;
 
@@ -475,6 +475,17 @@ var  _avoid = noone;
 		xSpeed += mySpeed;
 		
 
+	}
+	
+	
+	if haveBeenDamaged
+	{
+		
+		xSpeed = knockbackX;
+		ySpeed = knockbackY;
+		
+		knockbackX = lerp(knockbackX, 0, 0.2)
+		knockbackY = lerp(knockbackY, 0, 0.2)
 	}
 	
 	move.xSpdYSpd(xSpeed, ySpeed);
