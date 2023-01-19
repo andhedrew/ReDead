@@ -14,3 +14,6 @@ audio_play_sound(SoundtrackLOOP,1,true);
 
 throwsound = false;
 grabSound = false;
+
+
+roomTimer = 60*60;

@@ -21,11 +21,11 @@ enum State
 	
 }
 
-myState = State.Idle;
+myState = State.Ghost;
 
 global.myCorpse = noone;
 
-myMaxHealth = 6;
+myMaxHealth = 3;
 myHealth = myMaxHealth;
 haveBeenDamaged = false
 invincibility = false;

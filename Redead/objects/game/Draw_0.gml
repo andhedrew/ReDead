@@ -1,4 +1,4 @@
-if instance_exists(objPlayer) and room != Room0
+if instance_exists(objPlayer) and room != RoomStart
 {
 	if objPlayer.myState != State.Ghost
 	{
@@ -20,4 +20,12 @@ if instance_exists(objPlayer) and room != Room0
 	}
 	
 	
+}
+
+
+if objPlayer.myState == State.Ghost && !instance_exists(objCorpse) && !instance_exists(objGravestone)& !instance_exists(objEnemyLeavesCorpse)
+{
+draw_set_font(fntBebasbig)
+draw_text(1.5*16,8*16,"Press R to restart room");
+draw_set_font(fntBebas)
 }

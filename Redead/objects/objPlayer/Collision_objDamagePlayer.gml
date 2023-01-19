@@ -51,8 +51,11 @@ if myState != State.Ghost
 			knockbackY = -knockbackSpd;
 			knockbackX = knockbackSpd;
 		}
-
+		var _1 = 98;
+		var _2 = 115;
+		audio_play_sound(ouch,1,false,1,0,(irandom_range(_1,_2)/100));
 		invincibility = true;
+		myColor = c_red;
 		
 		alarm[0] = 40;
 		

@@ -1,10 +1,5 @@
 var _scale = 3;
 
-if room == Room0
-{
-draw_text((room_width/3)*_scale, (room_height/2)*_scale, "Press Space to Proceed")
-	
-}
 
 if room == RoomFinalScreen
 {
@@ -13,3 +8,4 @@ if room == RoomFinalScreen
 	draw_text((room_width/3)*_scale, (room_height/2)*_scale+_y+_y, "Drawing, thinking, designing, and programming mistakes:")
 	draw_text((room_width/3)*_scale, (room_height/2)*_scale+_y+_y+_y, "                ANDREW MILLER")
 }
+

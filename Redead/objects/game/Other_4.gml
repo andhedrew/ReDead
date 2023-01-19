@@ -6,4 +6,12 @@ if instance_exists(objPlayerStartPos)
 
 }
 
-objPlayer.myState = State.Idle;
+if room == Room0
+{
+	objPlayer.myState = State.Ghost;
+} else
+{
+	objPlayer.myState = State.Idle;
+}
+
+roomTimer = 60*60;

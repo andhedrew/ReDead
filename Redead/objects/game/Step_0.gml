@@ -1,8 +1,12 @@
-if room == Room0
+if room == RoomStart
 {
 	if keyboard_check_pressed(vk_space)
 	{
-		room_goto(Room1)
+		with objPlayer
+		{
+			myState = State.Ghost;
+		}
+		room_goto(Room0)
 	}
 	
 }
@@ -23,3 +27,5 @@ if objPlayer.myState != State.Throwing
 	throwsound = false;
 }
 
+
+roomTimer--;
