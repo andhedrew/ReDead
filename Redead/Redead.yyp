@@ -79,6 +79,7 @@
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},"order":0,},
     {"id":{"name":"Room18","path":"rooms/Room18/Room18.yy",},"order":25,},
     {"id":{"name":"sprPushPlayer","path":"sprites/sprPushPlayer/sprPushPlayer.yy",},"order":40,},
+    {"id":{"name":"Room7_1","path":"rooms/Room7_1/Room7_1.yy",},"order":36,},
     {"id":{"name":"squashedEnemy","path":"sounds/squashedEnemy/squashedEnemy.yy",},"order":18,},
     {"id":{"name":"game","path":"objects/game/game.yy",},"order":31,},
     {"id":{"name":"power_up","path":"sounds/power_up/power_up.yy",},"order":12,},
@@ -235,6 +236,7 @@
     {"roomId":{"name":"Room25","path":"rooms/Room25/Room25.yy",},},
     {"roomId":{"name":"RoomFinalScreen","path":"rooms/RoomFinalScreen/RoomFinalScreen.yy",},},
     {"roomId":{"name":"Room0","path":"rooms/Room0/Room0.yy",},},
+    {"roomId":{"name":"Room7_1","path":"rooms/Room7_1/Room7_1.yy",},},
   ],
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Animation Curves","folderPath":"folders/Animation Curves.yy","order":12,},
