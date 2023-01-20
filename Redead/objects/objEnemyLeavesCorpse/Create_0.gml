@@ -7,4 +7,4 @@
 // Inherit the parent event
 event_inherited();
 
-mySleepSprite = sprEnemyCorpse;
+mySleepSprite = sprEnemyCorpseIdle;

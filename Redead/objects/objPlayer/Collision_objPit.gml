@@ -1,7 +1,7 @@
 
 
 
-if myState != State.Ghost && myState != State.GrabbingInPit && myState != State.Throwing && myState != State.Grabbing
+if myState != State.Ghost && myState != State.GrabbingInPit && myState != State.ThrowingInPit && myState != State.Grabbing
 {
 	
 		if !other.filledIn
@@ -24,7 +24,7 @@ if myState != State.Ghost && myState != State.GrabbingInPit && myState != State.
 			myState = State.GrabbingInPit;
 		}
 		
-		sprite_index = sprPlayer;
+		
 
 	}
 	

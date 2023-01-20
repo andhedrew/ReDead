@@ -211,7 +211,7 @@ case State.Ghost: //============================================================
 	sprite_index = sprGhost;
 	myAlpha = 0.4;
 	speed = 0;
-
+	image_speed = 0.03;
 	
 	
 	//movement
@@ -304,6 +304,14 @@ if switchStateTimer < 2
 	audio_play_sound(grab,1,false);
 }
 
+if _down or _up or _left or _right
+{
+	image_speed = 0.2;
+} else
+{
+	image_speed = 0;
+	image_index = 0;
+}
 
 myColor = c_white;
 var  _avoid = noone;
@@ -313,7 +321,7 @@ var  _avoid = noone;
 		case Dir.North: sprite_index = sprPlayerGrabbingN; image_xscale = 1; break;
 		case Dir.South: sprite_index = sprPlayerGrabbingS; image_xscale = 1; break;
 		case Dir.East: sprite_index = sprPlayerGrabbingE; image_xscale = 1; break;
-		case Dir.West: sprite_index = sprPlayerGrabbingE; image_xscale = -1; break;
+		case Dir.West: sprite_index = sprPlayerGrabbingW; image_xscale = -1; break;
 	}
 	
 	switch facing
@@ -451,28 +459,29 @@ var  _avoid = noone;
 		var _rightcheck =  false;
 	}
 	
+	var _slowerSpeed = mySpeed/2;
 	if _up and !_upcheck
 	{
-		ySpeed -= mySpeed;
+		ySpeed -= _slowerSpeed;
 		
 
 	}
 	if _down and !_downcheck
 	{
-		ySpeed += mySpeed;
+		ySpeed += _slowerSpeed;
 	
 
 	}
 	
 	if _left and !_leftcheck
 	{
-		xSpeed -= mySpeed;
+		xSpeed -= _slowerSpeed;
 	
 
 	}
 	if _right and !_rightcheck
 	{
-		xSpeed += mySpeed;
+		xSpeed += _slowerSpeed;
 		
 
 	}
@@ -523,6 +532,41 @@ knockback = false;
 		case Dir.South: sprite_index = sprPlayerThrowS; image_xscale = 1; break;
 		case Dir.East: sprite_index = sprPlayerThrowEW; image_xscale = 1; break;
 		case Dir.West: sprite_index = sprPlayerThrowEW; image_xscale = -1; break;
+	}
+	
+	if switchStateTimer > 8
+	{
+		myState = State.Idle;
+	}
+	
+break;
+
+case State.ThrowingInPit: //================================================================================================================================================================//
+if createBallAfterTossingInPit
+{
+
+	switch facing
+	{
+		case Dir.North: grabbed.x = x; grabbed.y = y+16; break;
+		case Dir.South: grabbed.x = x; grabbed.y = y-16; break;
+		case Dir.East: grabbed.x = x-16; grabbed.y = y; break;
+		case Dir.West: grabbed.x = x+16; grabbed.y = y; break;
+
+	}
+	instance_activate_object(grabbed);
+	createBallAfterTossingInPit = false;
+	
+}
+
+
+
+knockback = false;
+	switch facing
+	{
+		case Dir.North: sprite_index = sprPlayerThrowInPitN; image_xscale = 1; break;
+		case Dir.South: sprite_index = sprPlayerThrowInPitS; image_xscale = 1; break;
+		case Dir.East: sprite_index = sprPlayerThrowInPitEW; image_xscale = 1; break;
+		case Dir.West: sprite_index = sprPlayerThrowInPitEW; image_xscale = -1; break;
 	}
 	
 	if switchStateTimer > 8
@@ -652,10 +696,10 @@ case State.GrabbingInPit: //====================================================
 	
 	switch facing
 	{
-		case Dir.North: sprite_index = sprPlayerGrabbingN; image_xscale = 1; break;
-		case Dir.South: sprite_index = sprPlayerGrabbingS; image_xscale = 1; break;
-		case Dir.East: sprite_index = sprPlayerGrabbingE; image_xscale = 1; break;
-		case Dir.West: sprite_index = sprPlayerGrabbingE; image_xscale = -1; break;
+		case Dir.North: sprite_index = sprPlayerGrabbingInPitN; image_xscale = 1; break;
+		case Dir.South: sprite_index = sprPlayerGrabbingInPitS; image_xscale = 1; break;
+		case Dir.East: sprite_index = sprPlayerGrabbingInPitE; image_xscale = 1; break;
+		case Dir.West: sprite_index = sprPlayerGrabbingInPitW; image_xscale = -1; break;
 	}
 	
 	if !destroyedGrabbedBall
@@ -696,7 +740,7 @@ case State.GrabbingInPit: //====================================================
 		}
 	
 		destroyedGrabbedBall = false;
-		myState = State.Throwing;
+		myState = State.ThrowingInPit;
 	
 	}
 	

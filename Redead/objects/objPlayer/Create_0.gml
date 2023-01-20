@@ -4,7 +4,7 @@ ySpeed = 0;
 knockbackX = 0;
 knockbackY = 0;
 knockbackSpd = 2;
-mySpeed = 2;
+mySpeed = 1.3;
 
 enum State
 {
@@ -18,6 +18,7 @@ enum State
 	InPit,
 	GrabbingInPit,
 	FLAMEMODEON,
+	ThrowingInPit,
 	
 }
 

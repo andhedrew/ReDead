@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "objCorpseAnimate",
   "spriteId": {
-    "name": "SprCorpseAnimate",
-    "path": "sprites/SprCorpseAnimate/SprCorpseAnimate.yy",
+    "name": "sprCorpseAnimate",
+    "path": "sprites/sprCorpseAnimate/sprCorpseAnimate.yy",
   },
   "solid": false,
   "visible": true,
