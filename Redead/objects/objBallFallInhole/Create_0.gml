@@ -10,3 +10,6 @@ depth = -1000
 
 
 audio_play_sound(jump,1,false);
+
+image_speed = .4;
+

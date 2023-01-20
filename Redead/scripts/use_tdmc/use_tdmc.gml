@@ -3,7 +3,7 @@ function use_tdmc(
   _placeMeeting = function(_x, _y){
     return place_meeting(_x, _y, objWall); //Replace objWall with your object 
   }, 
-  _cornerSlip = 16, 
+  _cornerSlip = 0, 
   _slipSpd = .5, 
   _catchupFactor = .5) {
     

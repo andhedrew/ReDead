@@ -19,3 +19,5 @@ if y > targetY+1 && !hitTarget
 
 
 timer ++;
+
+image_alpha -= 0.005;

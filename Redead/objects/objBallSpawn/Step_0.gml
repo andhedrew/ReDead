@@ -12,13 +12,13 @@ if createBall
 && !place_meeting(x,y-_margin,objEnemy)
 && !instance_exists(myBall)
 {
-	myBall = instance_create_depth(x,y,depth-1,objBall);
-	with myBall
-	{
+	myBall = instance_create_depth(x,y,depth-1,objBallGrow);
+	//with myBall
+	//{
 
-		finalDepth = depth;
-		_drawY = startY;
-		falling = true;
-	}
+	//	finalDepth = depth;
+	//	_drawY = startY;
+	//	falling = true;
+	//}
 	createBall = false;
 }
