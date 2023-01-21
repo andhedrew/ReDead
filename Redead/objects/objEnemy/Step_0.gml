@@ -1,7 +1,7 @@
 damageBox.x = x;
 damageBox.y = y;
 
-
+depth = SortLayer.Object-(y/10);
 
 
 move.xSpdYSpd_enemy(xSpeed, ySpeed);

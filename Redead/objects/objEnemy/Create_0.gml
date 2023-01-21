@@ -9,7 +9,7 @@ ySpeed = 0;
 
 
 
-depth = SortLayer.Object;
+depth = SortLayer.Object-(y/10);
 
 move = use_tdmc_enemy()
 

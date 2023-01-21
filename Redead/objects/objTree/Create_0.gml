@@ -1,1 +1,1 @@
-depth = SortLayer.Object;
+depth = SortLayer.Object-y;

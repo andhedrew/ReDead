@@ -6,7 +6,7 @@ if room == RoomStart
 		{
 			myState = State.Ghost;
 		}
-		room_goto(Room0)
+		room_goto(Room19_3)
 	}
 	
 }

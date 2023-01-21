@@ -12,3 +12,6 @@ image_index = 0;
 activated = false;
 
 wall = instance_create_depth(x,y,depth,objWallInvisible);
+
+
+depth = SortLayer.Object-(y/10);

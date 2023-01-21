@@ -9,7 +9,7 @@ enum SortLayer
 }
 audio_group_load(Music);
 audio_group_load(Sound);
-audio_play_sound(SoundtrackLOOP,1,true);
+//audio_play_sound(SoundtrackLOOP,1,true);
 
 
 throwsound = false;
