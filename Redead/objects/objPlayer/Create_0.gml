@@ -65,3 +65,4 @@ roomLastFrame = room;
 cancelMovement = false;
 
 flameModeDamage = noone;
+angryGhostTimer = 60;

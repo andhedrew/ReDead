@@ -1,7 +1,7 @@
 enum SortLayer
 {
 	Above = -100,
-	Player = 0,
+	Player = 50,
 	Object = 50,
 	Ground = 80,
 	GroundBelow = 90,
@@ -9,7 +9,7 @@ enum SortLayer
 }
 audio_group_load(Music);
 audio_group_load(Sound);
-//audio_play_sound(SoundtrackLOOP,1,true);
+audio_play_sound(SoundtrackLOOP,1,true);
 
 
 throwsound = false;

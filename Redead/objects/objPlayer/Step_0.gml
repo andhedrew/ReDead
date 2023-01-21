@@ -6,7 +6,7 @@ var _grab = keyboard_check(ord("X"));
 var _throw = keyboard_check_pressed(ord("Z"));
 var _die = keyboard_check_pressed(vk_space);
 
-
+depth = SortLayer.Player-y;
 
 var _up_pressed = keyboard_check_pressed(vk_up);
 var _down_pressed = keyboard_check_pressed(vk_down);
@@ -202,13 +202,19 @@ case State.Ghost: //============================================================
 		audio_play_sound(moan,0,false);
 	}
 	
-	knockback = false;
-	depth = SortLayer.Player;
-	if switchStateTimer > 60
+	if angryGhostTimer < 60
 	{
-		myColor = c_white;
+		sprite_index = sprGhostMAD;
+		angryGhostTimer++;
 	}
-	sprite_index = sprGhost;
+	else
+	{
+		sprite_index = sprGhost;
+	}
+	
+	knockback = false;
+	depth =  SortLayer.Player-y;
+	
 	myAlpha = 0.4;
 	speed = 0;
 	image_speed = 0.03;
@@ -284,7 +290,7 @@ case State.Ghost: //============================================================
 	{
 		if global.myCorpse != noone
 		{
-			myColor = c_red
+			angryGhostTimer = 0;
 			switchStateTimer = 0;
 			instance_destroy(global.myCorpse);
 			instance_create_depth(x,y,SortLayer.Above, objCorpseExplosion);
@@ -714,7 +720,7 @@ case State.GrabbingInPit: //====================================================
 	
 	if !_grab
 	{
-		var _dmgOffset = 20;
+		var _dmgOffset = 1;
 		switch facing
 		{
 			case Dir.North:  instance_create_depth(x,y+_dmgOffset,depth,objDamage); createBallAfterTossingInPit = true; break;
