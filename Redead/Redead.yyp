@@ -187,6 +187,7 @@
     {"id":{"name":"objLogoype","path":"objects/objLogoype/objLogoype.yy",},"order":4,},
     {"id":{"name":"objTree","path":"objects/objTree/objTree.yy",},"order":74,},
     {"id":{"name":"objWallBreakable","path":"objects/objWallBreakable/objWallBreakable.yy",},"order":65,},
+    {"id":{"name":"endAnimatedEnemy","path":"objects/endAnimatedEnemy/endAnimatedEnemy.yy",},"order":77,},
     {"id":{"name":"RoomFinalScreen","path":"rooms/RoomFinalScreen/RoomFinalScreen.yy",},"order":34,},
     {"id":{"name":"objEnemyDie","path":"objects/objEnemyDie/objEnemyDie.yy",},"order":47,},
     {"id":{"name":"Room19_3","path":"rooms/Room19_3/Room19_3.yy",},"order":39,},

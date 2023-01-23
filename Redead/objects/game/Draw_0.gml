@@ -1,4 +1,4 @@
-if instance_exists(objPlayer) and room != RoomStart
+if instance_exists(objPlayer) and room != RoomStart and room != RoomFinalScreen
 {
 	if objPlayer.myState != State.Ghost
 	{
@@ -29,3 +29,16 @@ draw_set_font(fntBebasbig)
 draw_text(1.5*16,8*16,"Press R to restart room");
 draw_set_font(fntBebas)
 }
+
+
+if room == RoomFinalScreen
+{
+	draw_set_font(fntBebasbig);
+	var _y = 120;
+	
+	draw_text(10, (room_height/2), "Drawing, thinking, designing,")
+	draw_text(10, (room_height/2)+16, "and programming mistakes:")
+	draw_text(10, (room_height/2)+16+25, "ANDREW MILLER,")
+	draw_text(10, (room_height/2)+16+25+16, "Hermit Gamesmith")
+}
+

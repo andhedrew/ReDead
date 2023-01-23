@@ -31,7 +31,7 @@ if myState != State.Ghost
 		var _2 = 115;
 		audio_play_sound(impact,1,false,1,0,(irandom_range(_1,_2)/100));
 		invincibility = true;
-		myColor = c_red;
+		
 		
 		alarm[0] = 40;
 		
